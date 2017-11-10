@@ -1,0 +1,24 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-3">
+
+      <app-categories
+        [categories]="categories | async"
+        [activeCategories]="activeCategories"
+        (onCategoryClick)="onCategoryClick($event)"
+        (onDeselectAll)="onDeselectAll()"></app-categories>
+
+    </div>
+
+    <div class="col-lg-9">
+
+      <div class="mt-4">
+        <app-product *ngFor="let product of products | async" [product]="product">
+        </app-product>
+      </div>
+
+    </div>
+  </div>
+</div>
