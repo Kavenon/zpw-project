@@ -6,7 +6,9 @@
     <h5>{{product.price.value | currency: product.price.currency: true}}</h5>
     <p class="card-text">{{product.description}}</p>
   </div>
-  <!--<div class="card-footer">-->
-    <!--<small class="text-muted">★ ★ ★ ★ ☆</small>-->
-  <!--</div>-->
+  <div class="card-footer">
+    <button (click)="addToCard()" class="btn btn-sm">
+      Dodaj do koszyka
+    </button>
+  </div>
 </div>

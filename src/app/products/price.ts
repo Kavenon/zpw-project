@@ -1,7 +1,8 @@
-type currencyType = 'USD' | 'PLN';
+export type currencyType = 'USD';
 
 export interface Price {
   value: number;
   currency: currencyType;
 }
+
 

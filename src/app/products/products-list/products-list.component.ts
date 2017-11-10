@@ -85,4 +85,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.pagination.page = selectedPage;
     this.products = this.productService.getProducts(this.filterQuery.getValue(), this.pagination);
   }
+
+  onTermChanged(term: string) {
+    this.filterQuery.next({...this.filterQuery.getValue(), term: term});
+  }
 }

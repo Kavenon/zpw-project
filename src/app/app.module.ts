@@ -9,6 +9,10 @@ import {CategoryService} from './products/category.service';
 import { ProductComponent } from './products/products-list/product/product.component';
 import {ProductService} from './products/product.service';
 import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './cart/cart.component';
+import { CartWidgetComponent } from './cart/cart-widget/cart-widget.component';
+import {CartService} from './cart/cart.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,16 @@ import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
     ProductsListComponent,
     CategoriesComponent,
     ProductComponent,
+    CartComponent,
+    CartWidgetComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
   ],
-  providers: [CategoryService, ProductService],
+  providers: [CategoryService, ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
