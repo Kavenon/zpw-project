@@ -5,3 +5,19 @@ body {
     padding-top: 56px;
   }
 }
+
+.ng-invalid.ng-dirty {
+  border-color: #dc3545;
+}
+.ng-valid.ng-dirty {
+  border-color: green;
+  outline-color: green;
+}
+// todo: validacja formularza
+
+.was-validated .form-control:invalid ~ .invalid-feedback, .was-validated .form-control:invalid ~ .invalid-tooltip, .form-control.ng-invalid.ng-dirty ~ .invalid-feedback, .form-control.ng-invalid.ng-dirty ~ .invalid-tooltip, .was-validated
+.custom-select:invalid ~ .invalid-feedback, .was-validated
+.custom-select:invalid ~ .invalid-tooltip, .custom-select.ng-invalid.ng-dirty ~ .invalid-feedback, .custom-select.ng-invalid.ng-dirty ~ .invalid-tooltip {
+
+  display:block;
+}

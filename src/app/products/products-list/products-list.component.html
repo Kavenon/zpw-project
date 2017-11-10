@@ -16,11 +16,9 @@
 
       <div class="mt-4">
 
-        <form>
           <div class="form-group">
             <input class="form-control" type="text" name="term" (input)="onTermChanged($event.target.value)" />
           </div>
-        </form>
 
         <app-product *ngFor="let product of products | async" [product]="product">
         </app-product>

@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartWidgetComponent } from './cart/cart-widget/cart-widget.component';
 import {CartService} from './cart/cart.service';
 import { CheckoutComponent } from './checkout/checkout.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
   ],
   providers: [CategoryService, ProductService, CartService],
