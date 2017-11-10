@@ -17,7 +17,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
 
+  checkoutSubmit() {
+    if(!this.checkoutForm.valid){
+      this.markFormGroupTouched(this.checkoutForm);
+      return;
+    }
+    console.log('submit', this.checkoutForm);
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control.controls) {
+        control.controls.forEach(c => this.markFormGroupTouched(c));
+      }
+    });
   }
 
 }

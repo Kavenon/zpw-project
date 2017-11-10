@@ -1,3 +1,5 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+
 body {
   padding-top: 54px;
 
@@ -6,18 +8,11 @@ body {
   }
 }
 
-.ng-invalid.ng-dirty {
-  border-color: #dc3545;
-}
-.ng-valid.ng-dirty {
-  border-color: green;
-  outline-color: green;
-}
-// todo: validacja formularza
 
-.was-validated .form-control:invalid ~ .invalid-feedback, .was-validated .form-control:invalid ~ .invalid-tooltip, .form-control.ng-invalid.ng-dirty ~ .invalid-feedback, .form-control.ng-invalid.ng-dirty ~ .invalid-tooltip, .was-validated
-.custom-select:invalid ~ .invalid-feedback, .was-validated
-.custom-select:invalid ~ .invalid-tooltip, .custom-select.ng-invalid.ng-dirty ~ .invalid-feedback, .custom-select.ng-invalid.ng-dirty ~ .invalid-tooltip {
+.ng-touched.ng-invalid {
+  @extend .is-invalid;
+}
 
-  display:block;
+.ng-touched.ng-valid {
+  @extend .is-valid;
 }
