@@ -8,6 +8,7 @@ import { CategoriesComponent } from './products/products-list/categories/categor
 import {CategoryService} from './products/category.service';
 import { ProductComponent } from './products/products-list/product/product.component';
 import {ProductService} from './products/product.service';
+import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ProductService} from './products/product.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot(),
   ],
   providers: [CategoryService, ProductService],
   bootstrap: [AppComponent]

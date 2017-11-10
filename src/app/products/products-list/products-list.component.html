@@ -6,7 +6,7 @@
 
       <app-categories
         [categories]="categories | async"
-        [activeCategories]="activeCategories"
+        [activeCategories]="activeCategories | async"
         (onCategoryClick)="onCategoryClick($event)"
         (onDeselectAll)="onDeselectAll()"></app-categories>
 
@@ -17,6 +17,13 @@
       <div class="mt-4">
         <app-product *ngFor="let product of products | async" [product]="product">
         </app-product>
+
+        <ngb-pagination [collectionSize]="pagination.total"
+                        [(page)]="pagination.page"
+                        [pageSize]="pagination.perPage"
+                        (pageChange)="onPageChange($event)"
+                        aria-label="Default pagination"></ngb-pagination>
+
       </div>
 
     </div>
