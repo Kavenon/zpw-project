@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -6,9 +6,20 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent {
 
   checkoutForm: FormGroup;
+
+  private static markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control.controls) {
+        control.controls.forEach(c => CheckoutComponent.markFormGroupTouched(c));
+      }
+    });
+  }
+
   constructor() {
     this.checkoutForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
@@ -16,25 +27,11 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   checkoutSubmit() {
-    if(!this.checkoutForm.valid){
-      this.markFormGroupTouched(this.checkoutForm);
+    if (!this.checkoutForm.valid) {
+      CheckoutComponent.markFormGroupTouched(this.checkoutForm);
       return;
     }
-    console.log('submit', this.checkoutForm);
-  }
-
-  private markFormGroupTouched(formGroup: FormGroup) {
-    (<any>Object).values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-
-      if (control.controls) {
-        control.controls.forEach(c => this.markFormGroupTouched(c));
-      }
-    });
   }
 
 }

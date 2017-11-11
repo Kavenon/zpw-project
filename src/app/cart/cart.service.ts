@@ -24,7 +24,7 @@ export class CartService {
 
   }
 
-  addProduct(product): void {
+  addProduct(product: Product): void {
     const productInCart = this.items.get(product.id);
     if (productInCart) {
       productInCart.amount++;
@@ -40,7 +40,7 @@ export class CartService {
   getTotalCount() {
     let total = 0;
     this.items.forEach(item => {
-      total = total + item.amount * item.product.price.value;
+      total = total + item.amount;
     });
     return total;
   }

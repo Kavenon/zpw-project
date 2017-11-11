@@ -6,7 +6,7 @@
 
       <app-categories
         [categories]="categories | async"
-        [activeCategories]="activeCategories | async"
+        [activeCategories]="activeCategories"
         (onCategoryClick)="onCategoryClick($event)"
         (onDeselectAll)="onDeselectAll()"></app-categories>
 
@@ -17,17 +17,23 @@
       <div class="mt-4">
 
           <div class="form-group">
-            <input class="form-control" type="text" name="term" (input)="onTermChanged($event.target.value)" />
+            <input class="form-control"
+                   type="text"
+                   name="term"
+                   placeholder="Wpisz fragment nazwy lub opisu..."
+                   (input)="onTermChanged($event.target.value)" />
           </div>
 
-        <app-product *ngFor="let product of products | async" [product]="product">
+        <app-product *ngFor="let product of products | async"
+                     [product]="product"
+                      (onAddToCart)="addToCart($event)"
+        >
         </app-product>
 
         <ngb-pagination [collectionSize]="pagination.total"
                         [(page)]="pagination.page"
                         [pageSize]="pagination.perPage"
-                        (pageChange)="onPageChange($event)"
-                        aria-label="Default pagination"></ngb-pagination>
+                        (pageChange)="onPageChange($event)"></ngb-pagination>
 
       </div>
 

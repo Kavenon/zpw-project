@@ -21,10 +21,11 @@ export class ProductService {
 
   getTotal(query: ProductFilterQuery): Promise<number> {
     const filtered = this.filterProducts(products, query);
-
     return Promise.resolve(filtered.length);
   }
 
+  // This is only used for mocked data. Will be removed after implementing API
+  // ==========================================================================
   filterProducts(products: Product[], query: ProductFilterQuery){
     return products
       .filter(product => {
@@ -44,4 +45,6 @@ export class ProductService {
   private subarray(array: any[], start: number, end: number) {
     return array.slice(start, end);
   }
+  // ==========================================================================
+
 }

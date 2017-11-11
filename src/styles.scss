@@ -8,6 +8,9 @@ body {
   }
 }
 
+button:not(disabled) {
+  cursor: pointer;
+}
 
 .ng-touched.ng-invalid {
   @extend .is-invalid;

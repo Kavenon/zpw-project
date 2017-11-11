@@ -9,6 +9,7 @@ import {ProductFilterQuery} from './product-filter-query';
 import {Observable, Subscribable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {Pagination} from './pagination';
+import {CartService} from '../../cart/cart.service';
 
 @Component({
   selector: 'app-products-list',
@@ -18,17 +19,16 @@ import {Pagination} from './pagination';
 export class ProductsListComponent implements OnInit, OnDestroy {
 
   categories: Promise<Category[]>;
-  activeCategories = new BehaviorSubject<number[]>([]);
-
   products: Observable<Product[]>;
+
+  activeCategories: number[] = [];
   filterQuery: BehaviorSubject<ProductFilterQuery>;
-
   filterQuerySub: Subscription;
-
   pagination: Pagination;
 
   constructor(private categoryService: CategoryService,
-              private productService: ProductService
+              private productService: ProductService,
+              private cartService: CartService
   ) {
 
   }
@@ -36,11 +36,10 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    const initFilter = {
+    this.filterQuery = new BehaviorSubject<ProductFilterQuery>({
       term: null,
       categories: [],
-    };
-    this.filterQuery = new BehaviorSubject<ProductFilterQuery>(initFilter);
+    });
     this.pagination = {
       page: 1,
       perPage: 1,
@@ -53,8 +52,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       // Todo: move to @ng/rx
       this.pagination.page = 1;
       this.products = this.productService.getProducts(filter, this.pagination);
-      this.productService.getTotal(filter).then(total => this.pagination.total = total);
-      this.activeCategories.next(filter.categories);
+      this.productService.getTotal(filter)
+        .then(total => this.pagination.total = total);
+      this.activeCategories = filter.categories;
     });
 
   }
@@ -65,7 +65,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   onCategoryClick(category) {
 
-    const activeCategoriesVal = this.activeCategories.getValue() || [];
+    const activeCategoriesVal = this.activeCategories || [];
     let categories;
     if (activeCategoriesVal.indexOf(category.id) > -1) {
       categories = activeCategoriesVal.filter((id) => id !== category.id);
@@ -78,7 +78,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   onDeselectAll() {
-    this.activeCategories.next([]);
+    this.filterQuery.next({...this.filterQuery.getValue(), categories: []});
   }
 
   onPageChange(selectedPage: number) {
@@ -88,5 +88,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   onTermChanged(term: string) {
     this.filterQuery.next({...this.filterQuery.getValue(), term: term});
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addProduct(product);
   }
 }

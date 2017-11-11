@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartItem} from './cart-item';
 import {CartService} from './cart.service';
 import {Router} from '@angular/router';
+import {Price} from '../products/price';
 
 @Component({
   selector: 'app-cart',
@@ -11,12 +12,14 @@ import {Router} from '@angular/router';
 export class CartComponent implements OnInit {
 
   items: Map<number, CartItem> = new Map();
+  totalValue: Price;
 
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit() {
     this.cartService.cartChanged.subscribe((items) => {
       this.items = items;
+      this.totalValue = this.cartService.getTotalPrice();
     });
   }
 
