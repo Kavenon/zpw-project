@@ -5,17 +5,21 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {Pagination} from './products-list/pagination';
 import {ProductFilterQuery} from './products-list/product-filter-query';
+import {ProductResponse} from './product-response';
 
 @Injectable()
 export class ProductService {
 
-  getProducts(query: ProductFilterQuery, pagination: Pagination): Observable<Product[]> {
+  getProducts(query: ProductFilterQuery, pagination: Pagination): Observable<ProductResponse> {
 
     const filtered = this.filterProducts(products, query);
     const start = (pagination.page - 1) * pagination.perPage;
     const end = start + pagination.perPage;
 
-    return Observable.of(this.subarray(filtered, start, end));
+    return Observable.of({
+      items: this.subarray(filtered, start, end),
+      total: filtered.length
+    });
 
   }
 

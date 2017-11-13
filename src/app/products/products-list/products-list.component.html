@@ -30,9 +30,10 @@
         >
         </app-product>
 
-        <ngb-pagination [collectionSize]="pagination.total"
-                        [(page)]="pagination.page"
-                        [pageSize]="pagination.perPage"
+
+        <ngb-pagination [collectionSize]="(pagination | async).total"
+                        [page]="(pagination | async).page"
+                        [pageSize]="(pagination | async).perPage"
                         (pageChange)="onPageChange($event)"></ngb-pagination>
 
       </div>

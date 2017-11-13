@@ -1,20 +1,20 @@
 import {Product} from '../../products/product';
-import {products} from '../../products/product.mock';
-import {buildReducer} from '../build.reducer';
+import {createReducer} from '../build.reducer';
 import {LoadProductsAction} from './load-products.action';
 import {ProductFilterQuery} from '../../products/products-list/product-filter-query';
 import {Pagination} from '../../products/products-list/pagination';
 import {LoadProductsSuccessAction} from './load-products-success.action';
+import {ChangePageAction} from './change-page.action';
 
 export interface ProductsState {
-  products: Product[];
+  items: Product[];
   total: 0;
   query: ProductFilterQuery;
   pagination: Pagination;
 }
 
 const initState: ProductsState = {
-  products: [],
+  items: [],
   total: 0,
   query: {
     term: null,
@@ -27,7 +27,8 @@ const initState: ProductsState = {
   }
 };
 
-export const ProductsReducer = buildReducer(initState,
+export const ProductsReducer = createReducer(initState,
+  ChangePageAction,
   LoadProductsAction,
   LoadProductsSuccessAction,
 );

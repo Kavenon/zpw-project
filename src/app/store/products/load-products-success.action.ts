@@ -12,9 +12,9 @@ export class LoadProductsSuccessAction implements Action {
   type = LoadProductsSuccessAction.type;
 
   static reduce(state: ProductsState, action: LoadProductsSuccessAction) {
-    return {...state, products: action.products};
+    return {...state, items: action.products, pagination: { ...state.pagination, total: action.total}};
   }
 
-  constructor(public products: Product[]) { }
+  constructor(public products: Product[], public total: number) { }
 
 }

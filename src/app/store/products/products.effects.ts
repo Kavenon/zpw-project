@@ -6,6 +6,9 @@ import {LoadProductsSuccessAction} from './load-products-success.action';
 import 'rxjs/add/operator/switchMap';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/withLatestFrom';
+import {AppState} from '../app.store';
+import {Store} from '@ngrx/store';
+import {ChangePageAction} from './change-page.action';
 
 @Injectable()
 export class ProductsEffects {
@@ -13,12 +16,17 @@ export class ProductsEffects {
   @Effect() loadProducts$ = this.action$
     .ofType(LoadProductsAction.type)
     .withLatestFrom(this.store$)
-    .switchMap((action: LoadProductsAction) =>
-      this.productService.getProducts(action.query, action.pagination)
-        .switchMap((result) => Observable.of(new LoadProductsSuccessAction(result)))
+    .switchMap(([action, state]) =>
+      this.productService.getProducts(state.products.query, state.products.pagination)
+        .switchMap((result) => Observable.of(new LoadProductsSuccessAction(result.items, result.total)))
   );
 
+  @Effect() changePage$ = this.action$
+    .ofType(ChangePageAction.type)
+    .switchMap(state => Observable.of(new LoadProductsAction()));
 
-  constructor(private action$: Actions, private productService: ProductService) {
+  constructor(private action$: Actions,
+              private productService: ProductService,
+              private store$: Store<AppState>) {
   }
 }

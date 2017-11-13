@@ -8,16 +8,16 @@ import { CategoriesComponent } from './products/products-list/categories/categor
 import {CategoryService} from './products/category.service';
 import { ProductComponent } from './products/products-list/product/product.component';
 import {ProductService} from './products/product.service';
-import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './cart/cart.component';
 import { CartWidgetComponent } from './cart/cart-widget/cart-widget.component';
 import {CartService} from './cart/cart.service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
-import {AppReducers} from './store/app.store';
-import {ProductsEffects} from './store/products/products.effects';
+import {AppEffects, AppReducers} from './store/app.store';
 import {EffectsModule} from '@ngrx/effects';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,10 @@ import {EffectsModule} from '@ngrx/effects';
     ReactiveFormsModule,
     NgbModule.forRoot(),
     StoreModule.forRoot(AppReducers),
-    EffectsModule.forRoot(ProductsEffects),
+    EffectsModule.forRoot(AppEffects),
+    StoreDevtoolsModule.instrument({
+      maxAge: 5
+    })
   ],
   providers: [CategoryService, ProductService, CartService],
   bootstrap: [AppComponent]

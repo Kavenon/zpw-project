@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 
-export function buildReducer<T>(initial: T, ...actionClasses: { type: string, reduce: (state: T, action: Action) => T }[]) {
+export function createReducer<T>(initial: T, ...actionClasses: { type: string, reduce: (state: T, action: Action) => T }[]) {
   const handlers: {
     [key: string]: (state: T, action: Action) => T
   } = {};
