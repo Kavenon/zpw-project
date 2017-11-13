@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Price} from '../../products/price';
 import {CartService} from '../cart.service';
+import {Observable} from 'rxjs/Observable';
+import {AppState} from '../../store/app.store';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-cart-widget',
@@ -9,14 +12,12 @@ import {CartService} from '../cart.service';
 })
 export class CartWidgetComponent implements OnInit {
 
-  totalCount: number;
-  totalValue: Price;
-  constructor(private cartService: CartService) { }
+  totalCount: Observable<number>;
+  totalValue: Observable<Price>;
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.cartService.cartChanged.subscribe(() => {
-      this.totalValue = this.cartService.getTotalPrice();
-      this.totalCount = this.cartService.getTotalCount();
-    });
+    this.totalCount = this.store.select(state => state.cart.totalCount);
+    this.totalValue = this.store.select(state => state.cart.totalValue);
   }
 }

@@ -3,6 +3,11 @@ import {CartItem} from './cart-item';
 import {CartService} from './cart.service';
 import {Router} from '@angular/router';
 import {Price} from '../products/price';
+import {AppState} from '../store/app.store';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {DeleteItemAction} from '../store/cart/delete-item.action';
+import {Product} from '../products/product';
 
 @Component({
   selector: 'app-cart',
@@ -11,28 +16,17 @@ import {Price} from '../products/price';
 })
 export class CartComponent implements OnInit {
 
-  items: Map<number, CartItem> = new Map();
-  totalValue: Price;
+  items: Observable<CartItem[]>;
+  totalValue: Observable<Price>;
 
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private store: Store<AppState>, private cartService: CartService, private router: Router) { }
 
   ngOnInit() {
-    this.cartService.cartChanged.subscribe((items) => {
-      this.items = items;
-      this.totalValue = this.cartService.getTotalPrice();
-    });
+    this.items = this.store.select(state => state.cart.items);
+    this.totalValue = this.store.select(state => state.cart.totalValue);
   }
 
-  toArray(items: Map<number, CartItem>): number[] {
-
-    if(items.size === 0){
-      return [];
-    }
-
-    return Array.from(items.keys());
-  }
-
-  deleteItem(key){
-    this.cartService.deleteProduct(key);
+  deleteItem(product: Product){
+    this.store.dispatch(new DeleteItemAction(product));
   }
 }

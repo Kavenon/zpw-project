@@ -1,2 +1,2 @@
-Koszyk: {{totalCount}} produkt(ów). {{totalValue.value | currency: totalValue.currency: true }}
+Koszyk: {{totalCount | async}} produkt(ów). {{(totalValue | async).value | currency: (totalValue | async).currency: true }}
 <button class="btn btn-primary btn-sm ml-4" routerLink="/cart">Do kasy</button>

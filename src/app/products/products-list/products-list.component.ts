@@ -3,7 +3,6 @@ import {Category} from '../category';
 import {Product} from '../product';
 import {Observable} from 'rxjs/Observable';
 import {Pagination} from './pagination';
-import {CartService} from '../../cart/cart.service';
 import {AppState} from '../../store/app.store';
 import {Store} from '@ngrx/store';
 import {LoadProductsAction} from '../../store/products/load-products.action';
@@ -11,6 +10,7 @@ import {LoadCategoriesAction} from '../../store/categories/load-categories.actio
 import {ChangePageAction} from '../../store/products/change-page.action';
 import {FilterCategoryAction} from '../../store/products/filter-category.action';
 import {ChangeTermAction} from '../../store/products/change-term.action';
+import {AddItemAction} from '../../store/cart/add-item.action';
 
 @Component({
   selector: 'app-products-list',
@@ -25,8 +25,7 @@ export class ProductsListComponent implements OnInit {
   activeCategories: Observable<number[]>;
   pagination: Observable<Pagination>;
 
-  constructor(private store: Store<AppState>,
-              private cartService: CartService) {
+  constructor(private store: Store<AppState>) {
 
   }
 
@@ -59,6 +58,6 @@ export class ProductsListComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addProduct(product);
+    this.store.dispatch(new AddItemAction(product, 1));
   }
 }
