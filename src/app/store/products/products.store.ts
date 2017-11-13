@@ -5,6 +5,9 @@ import {ProductFilterQuery} from '../../products/products-list/product-filter-qu
 import {Pagination} from '../../products/products-list/pagination';
 import {LoadProductsSuccessAction} from './load-products-success.action';
 import {ChangePageAction} from './change-page.action';
+import {FilterCallback} from 'tslint';
+import {FilterCategoryAction} from './filter-category.action';
+import {ChangeTermAction} from './change-term.action';
 
 export interface ProductsState {
   items: Product[];
@@ -29,6 +32,8 @@ const initState: ProductsState = {
 
 export const ProductsReducer = createReducer(initState,
   ChangePageAction,
+  ChangeTermAction,
+  FilterCategoryAction,
   LoadProductsAction,
   LoadProductsSuccessAction,
 );

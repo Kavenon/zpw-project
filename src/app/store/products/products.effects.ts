@@ -9,6 +9,7 @@ import 'rxjs/add/operator/withLatestFrom';
 import {AppState} from '../app.store';
 import {Store} from '@ngrx/store';
 import {ChangePageAction} from './change-page.action';
+import {FilterCategoryAction} from './filter-category.action';
 
 @Injectable()
 export class ProductsEffects {
@@ -24,6 +25,10 @@ export class ProductsEffects {
   @Effect() changePage$ = this.action$
     .ofType(ChangePageAction.type)
     .switchMap(state => Observable.of(new LoadProductsAction()));
+
+  @Effect() filterCategory$ = this.action$
+    .ofType(FilterCategoryAction.type)
+    .switchMap(state => Observable.of(new ChangePageAction(1)));
 
   constructor(private action$: Actions,
               private productService: ProductService,

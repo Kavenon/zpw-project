@@ -6,7 +6,7 @@
 
       <app-categories
         [categories]="categories | async"
-        [activeCategories]="activeCategories"
+        [activeCategories]="activeCategories | async"
         (onCategoryClick)="onCategoryClick($event)"
         (onDeselectAll)="onDeselectAll()"></app-categories>
 
