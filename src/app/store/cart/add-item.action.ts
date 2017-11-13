@@ -1,16 +1,14 @@
 import {Action} from '@ngrx/store';
-import {ProductFilterQuery} from '../../products/products-list/product-filter-query';
-import {Pagination} from '../../products/products-list/pagination';
 import {type} from '../type';
 import {Product} from '../../products/product';
-import {CartStore} from './cart.store';
+import {CartState} from './cart.store';
 
 export class AddItemAction implements Action {
 
   static type = type('cart.ADD_ITEM');
   type = AddItemAction.type;
 
-  static reduce(state: CartStore, action: AddItemAction) {
+  static reduce(state: CartState, action: AddItemAction) {
 
     const index = state.items
       .map(item => item.product.id)

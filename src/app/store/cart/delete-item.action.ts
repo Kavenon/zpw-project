@@ -1,16 +1,14 @@
 import {Action} from '@ngrx/store';
-import {ProductFilterQuery} from '../../products/products-list/product-filter-query';
-import {Pagination} from '../../products/products-list/pagination';
 import {type} from '../type';
 import {Product} from '../../products/product';
-import {CartStore} from './cart.store';
+import {CartState} from './cart.store';
 
 export class DeleteItemAction implements Action {
 
   static type = type('cart.DELETE_ITEM');
   type = DeleteItemAction.type;
 
-  static reduce(state: CartStore, action: DeleteItemAction) {
+  static reduce(state: CartState, action: DeleteItemAction) {
 
     const index = state.items
       .map(item => item.product.id)

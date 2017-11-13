@@ -9,6 +9,13 @@ body {
   }
 }
 
+.nav-item {
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
 button:not(disabled) {
   cursor: pointer;
 }

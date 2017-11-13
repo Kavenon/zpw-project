@@ -4,13 +4,13 @@ import {Price} from '../../products/price';
 import {AddItemAction} from './add-item.action';
 import {DeleteItemAction} from './delete-item.action';
 
-export interface CartStore {
+export interface CartState {
   items: CartItem[];
   totalCount: number;
   totalValue: Price;
 }
 
-const initState: CartStore = {
+const initState: CartState = {
   items: [],
   totalCount: 0,
   totalValue: {
