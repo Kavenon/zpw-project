@@ -14,6 +14,10 @@ import { CartWidgetComponent } from './cart/cart-widget/cart-widget.component';
 import {CartService} from './cart/cart.service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {StoreModule} from '@ngrx/store';
+import {AppReducers} from './store/app.store';
+import {ProductsEffects} from './store/products/products.effects';
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
+    StoreModule.forRoot(AppReducers),
+    EffectsModule.forRoot(ProductsEffects),
   ],
   providers: [CategoryService, ProductService, CartService],
   bootstrap: [AppComponent]

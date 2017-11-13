@@ -10,6 +10,9 @@ import {Observable, Subscribable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import {Pagination} from './pagination';
 import {CartService} from '../../cart/cart.service';
+import {AppState} from '../../store/app.store';
+import {Store} from '@ngrx/store';
+import {LoadProductsAction} from '../../store/products/load-products.action';
 
 @Component({
   selector: 'app-products-list',
@@ -28,13 +31,16 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   constructor(private categoryService: CategoryService,
               private productService: ProductService,
-              private cartService: CartService
+              private cartService: CartService,
+              private store: Store<AppState>,
   ) {
 
   }
 
 
   ngOnInit() {
+
+    this.store.dispatch(new LoadProductsAction());
 
     this.filterQuery = new BehaviorSubject<ProductFilterQuery>({
       term: null,
