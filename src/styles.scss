@@ -1,4 +1,5 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
+@import '~nouislider/distribute/nouislider.min.css';
 
 body {
   padding-top: 54px;
@@ -18,4 +19,8 @@ button:not(disabled) {
 
 .ng-touched.ng-valid {
   @extend .is-valid;
+}
+
+.noUi-connect {
+  background:#0062cc;
 }

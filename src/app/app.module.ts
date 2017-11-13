@@ -13,11 +13,13 @@ import { CartComponent } from './cart/cart.component';
 import { CartWidgetComponent } from './cart/cart-widget/cart-widget.component';
 import {CartService} from './cart/cart.service';
 import { CheckoutComponent } from './checkout/checkout.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {AppEffects, AppReducers} from './store/app.store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {Ng2SliderComponent} from 'ng2-slider-component/ng2-slider.component';
+import {NouisliderModule} from 'ng2-nouislider';
 
 @NgModule({
   declarations: [
@@ -32,13 +34,15 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
     StoreModule.forRoot(AppReducers),
     EffectsModule.forRoot(AppEffects),
     StoreDevtoolsModule.instrument({
       maxAge: 5
-    })
+    }),
+    NouisliderModule,
   ],
   providers: [CategoryService, ProductService, CartService],
   bootstrap: [AppComponent]

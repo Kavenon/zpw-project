@@ -10,6 +10,25 @@
         (onCategoryClick)="onCategoryClick($event)"
         (onDeselectAll)="onDeselectAll()"></app-categories>
 
+      <div class="text-center">
+        Cena
+      </div>
+
+      <nouislider [connect]="true"
+                  [min]="0"
+                  [max]="2000"
+                  [step]="10"
+                  [ngModel]="priceRange | async"
+                  (ngModelChange)="priceRangeChanged($event)"></nouislider>
+      <div>
+        <span class="pull-left">
+          {{(priceRange | async)[0]}}
+        </span>
+        <span class="pull-right">
+          {{(priceRange | async)[1]}}
+        </span>
+      </div>
+
     </div>
 
     <div class="col-lg-9">

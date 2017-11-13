@@ -10,15 +10,6 @@ export class CheckoutComponent {
 
   checkoutForm: FormGroup;
 
-  private static markFormGroupTouched(formGroup: FormGroup) {
-    (<any>Object).values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
-
-      if (control.controls) {
-        control.controls.forEach(c => CheckoutComponent.markFormGroupTouched(c));
-      }
-    });
-  }
 
   constructor() {
     this.checkoutForm = new FormGroup({
@@ -29,7 +20,6 @@ export class CheckoutComponent {
 
   checkoutSubmit() {
     if (!this.checkoutForm.valid) {
-      CheckoutComponent.markFormGroupTouched(this.checkoutForm);
       return;
     }
   }

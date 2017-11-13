@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Category} from '../category';
 import {Product} from '../product';
 import {Observable} from 'rxjs/Observable';
@@ -11,22 +11,37 @@ import {ChangePageAction} from '../../store/products/change-page.action';
 import {FilterCategoryAction} from '../../store/products/filter-category.action';
 import {ChangeTermAction} from '../../store/products/change-term.action';
 import {AddItemAction} from '../../store/cart/add-item.action';
+import {ChangePriceAction} from '../../store/products/change-price.action';
+import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
 
   categories: Observable<Category[]>;
   products: Observable<Product[]>;
 
   activeCategories: Observable<number[]>;
   pagination: Observable<Pagination>;
+  priceRange: Observable<number[]>;
+
+  rangeChanged: Subject<number[]> = new Subject<number[]>();
+  rangeChangedSubscription: Subscription;
 
   constructor(private store: Store<AppState>) {
-
+    this.rangeChangedSubscription =
+      this.rangeChanged
+        .debounceTime(200)
+        .distinctUntilChanged()
+        .subscribe(range => {
+          this.store.dispatch(new ChangePriceAction(range[0], range[1]));
+        });
   }
 
   ngOnInit() {
@@ -38,7 +53,12 @@ export class ProductsListComponent implements OnInit {
     this.categories = this.store.select(state => state.categories.items);
     this.pagination = this.store.select(state => state.products.pagination);
     this.activeCategories = this.store.select(state => state.products.query.categories);
+    this.priceRange = this.store.select(state => state.products.query.price);
 
+  }
+
+  ngOnDestroy(){
+    this.rangeChangedSubscription.unsubscribe();
   }
 
   onCategoryClick(category) {
@@ -59,5 +79,9 @@ export class ProductsListComponent implements OnInit {
 
   addToCart(product: Product) {
     this.store.dispatch(new AddItemAction(product, 1));
+  }
+
+  priceRangeChanged(range){
+    this.rangeChanged.next(range);
   }
 }
