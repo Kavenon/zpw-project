@@ -10,6 +10,27 @@ import {ProductResponse} from './product-response';
 @Injectable()
 export class ProductService {
 
+  getAllProducts(): Observable<ProductResponse> {
+    return Observable.of({
+      items: products,
+      total: products.length
+    });
+  }
+
+  deleteProduct(productId: number): Observable<Object> {
+    return Observable.of({});
+    // todo: relete
+  }
+
+  saveProduct(product: Product) {
+    if (product.id) {
+      // update
+    }
+    else {
+      // save
+    }
+  }
+
   getProducts(query: ProductFilterQuery, pagination: Pagination): Observable<ProductResponse> {
 
     const filtered = this.filterProducts(products, query);

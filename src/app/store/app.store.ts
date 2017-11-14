@@ -7,6 +7,8 @@ import {UserReducer, UserState} from './user/user.store';
 import {UserEffects} from './user/user.effects';
 import {OrdersEffects} from '../admin/store/orders/orders.effects';
 import {OrdersReducer, OrdersState} from '../admin/store/orders/orders.store';
+import {AdminProductsEffects} from '../admin/store/products/products.effects';
+import {AdminProductsReducer, AdminProductsState} from '../admin/store/products/products.store';
 
 export interface AppState {
   products: ProductsState;
@@ -14,6 +16,7 @@ export interface AppState {
   cart: CartState;
   user: UserState;
   orders: OrdersState;
+  adminProducts: AdminProductsState;
 }
 
 export const AppReducers = {
@@ -22,6 +25,7 @@ export const AppReducers = {
   cart: CartReducer,
   user: UserReducer,
   orders: OrdersReducer,
+  adminProducts: AdminProductsReducer,
 };
 
 export const AppEffects = [
@@ -29,4 +33,5 @@ export const AppEffects = [
   CategoriesEffects,
   UserEffects,
   OrdersEffects,
+  AdminProductsEffects,
 ];

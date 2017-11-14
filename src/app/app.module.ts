@@ -29,6 +29,8 @@ import {OrderDetailsComponent} from './admin/orders/order-details/order-details.
 import {ProductsComponent} from './admin/products/products.component';
 import {OrderService} from './admin/orders/order.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ProductFormComponent} from './admin/products/product-form/product-form.component';
+import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import {HttpClientModule} from '@angular/common/http';
     OrdersListComponent,
     OrderDetailsComponent,
     ProductsComponent,
+    ProductFormComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,

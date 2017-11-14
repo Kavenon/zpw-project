@@ -1,3 +1,10 @@
-<p>
-  products works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2 class="mt-4">Produkty</h2>
+      <app-products-list [products]="products$ | async" (onDeleteProduct)="onDeleteProduct($event)"
+                         (onEditProduct)="onEditProduct($event)"></app-products-list>
+    </div>
+  </div>
+</div>
+</div>
