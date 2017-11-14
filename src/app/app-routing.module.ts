@@ -6,6 +6,9 @@ import {CheckoutComponent} from './checkout/checkout.component';
 import {AdminHomeComponent} from './admin/admin-home/admin-home.component';
 import {LoginComponent} from './user/login/login.component';
 import {AuthGuard} from './auth/auth-guard.service';
+import {OrdersComponent} from './admin/orders/orders.component';
+import {ProductsComponent} from './admin/products/products.component';
+import {OrderDetailsComponent} from './admin/orders/order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,20 @@ const routes: Routes = [
       {
         path: 'home',
         component: AdminHomeComponent,
+      },
+      {
+        path: 'order',
+        component: OrdersComponent,
+        children: [
+          {
+            path: ':id',
+            component: OrderDetailsComponent
+          }
+        ]
+      },
+      {
+        path: 'product',
+        component: ProductsComponent,
       },
       {
         path: '',

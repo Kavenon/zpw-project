@@ -23,6 +23,12 @@ import {AdminHomeComponent} from './admin/admin-home/admin-home.component';
 import {LoginComponent} from './user/login/login.component';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard.service';
+import {OrdersComponent} from './admin/orders/orders.component';
+import {OrdersListComponent} from './admin/orders/orders-list/orders-list.component';
+import {OrderDetailsComponent} from './admin/orders/order-details/order-details.component';
+import {ProductsComponent} from './admin/products/products.component';
+import {OrderService} from './admin/orders/order.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,10 +41,15 @@ import {AuthGuard} from './auth/auth-guard.service';
     CheckoutComponent,
     AdminHomeComponent,
     LoginComponent,
+    OrdersComponent,
+    OrdersListComponent,
+    OrderDetailsComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
@@ -49,7 +60,7 @@ import {AuthGuard} from './auth/auth-guard.service';
     }),
     NouisliderModule,
   ],
-  providers: [CategoryService, ProductService, CartService, AuthService, AuthGuard],
+  providers: [CategoryService, ProductService, CartService, AuthService, AuthGuard, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

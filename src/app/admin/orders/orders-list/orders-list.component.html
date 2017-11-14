@@ -1,0 +1,16 @@
+<table class="table text-center">
+  <tr>
+    <th>Imie</th>
+    <th>Nazwisko</th>
+    <th>Wartość</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let item of orders">
+    <td>{{item.name}}</td>
+    <td>{{item.surname}}</td>
+    <td>{{item.totalValue.value | currency: item.totalValue.currency}}</td>
+    <td>
+      <button class="btn btn-primary btn-sm" (click)="openDetails(item)">Szczegóły</button>
+    </td>
+  </tr>
+</table>

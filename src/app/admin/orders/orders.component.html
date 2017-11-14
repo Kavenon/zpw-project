@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mt-4">Złożone zamówienia</h2>
+      <app-orders-list [orders]="orders$ | async" (onOrderClick)="onOrderClick($event)"></app-orders-list>
+    </div>
+    <div class="col-md-4" *ngIf="activeOrder">
+      <h2 class="mt-4">Szczegóły</h2>
+      <app-order-details [order]="activeOrder"></app-order-details>
+    </div>
+  </div>
+</div>
