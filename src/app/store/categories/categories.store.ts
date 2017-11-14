@@ -11,7 +11,11 @@ const initState: CategoriesState = {
   items: [],
 };
 
-export const CategoriesReducer = createReducer(initState,
+const reducer = createReducer(initState,
   LoadCategoriesAction,
   LoadCategoriesSuccessAction,
 );
+
+export function CategoriesReducer(state, action) {
+  return reducer(state, action);
+}

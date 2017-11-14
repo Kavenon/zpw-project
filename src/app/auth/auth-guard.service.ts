@@ -2,6 +2,7 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {Observable} from 'rxjs/Observable';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -10,15 +11,13 @@ export class AuthGuard implements CanActivate {
 
   }
 
-  // Todo: finish authorization. after reload it's gone
-
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.isAuth()) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
+    return this.authService.isAuth()
+      .do((authorized) => {
+        if (!authorized) {
+          this.router.navigate(['/login']);
+        }
+      });
     }
-  }
 
 }

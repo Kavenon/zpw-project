@@ -4,6 +4,7 @@ import {CategoriesEffects} from './categories/categories.effects';
 import {ProductsEffects} from './products/products.effects';
 import {CartReducer, CartState} from './cart/cart.store';
 import {UserReducer, UserState} from './user/user.store';
+import {UserEffects} from './user/user.effects';
 
 export interface AppState {
   products: ProductsState;
@@ -22,4 +23,5 @@ export const AppReducers = {
 export const AppEffects = [
   ProductsEffects,
   CategoriesEffects,
+  UserEffects,
 ];

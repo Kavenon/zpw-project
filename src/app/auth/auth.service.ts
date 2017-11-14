@@ -5,6 +5,7 @@ import {Store} from '@ngrx/store';
 import {LoginAction} from '../store/user/login.action';
 import {LoginFailAction} from '../store/user/login-fail.action';
 import {LoginSuccessAction} from '../store/user/login-success.action';
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AuthService {
@@ -20,8 +21,7 @@ export class AuthService {
   }
 
   isAuth() {
-    return !!firebase.auth().currentUser;
-    // return this.store.select(state => state.user.authorized);
+    return this.store.select(state => state.user.authorized);
   }
 
 }

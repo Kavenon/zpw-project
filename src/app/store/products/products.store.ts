@@ -30,7 +30,7 @@ const initState: ProductsState = {
     total: 0
   }
 };
-export const ProductsReducer = createReducer(initState,
+const reducer = createReducer(initState,
   ChangePriceAction,
   ChangePageAction,
   ChangeTermAction,
@@ -38,3 +38,7 @@ export const ProductsReducer = createReducer(initState,
   LoadProductsAction,
   LoadProductsSuccessAction,
 );
+
+export function ProductsReducer(state, action) {
+  return reducer(state, action);
+}

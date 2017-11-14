@@ -19,7 +19,11 @@ const initState: CartState = {
   }
 };
 
-export const CartReducer = createReducer(initState,
+export const reducer = createReducer(initState,
   DeleteItemAction,
   AddItemAction
 );
+
+export function CartReducer(state, action) {
+  return reducer(state, action);
+}
