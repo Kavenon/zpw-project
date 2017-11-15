@@ -1,13 +1,13 @@
 import {Product} from '../../products/product';
 import {LoadProductsAction} from './load-products.action';
-import {ProductFilterQuery} from '../../products/products-list/product-filter-query';
-import {Pagination} from '../../products/products-list/pagination';
 import {LoadProductsSuccessAction} from './load-products-success.action';
 import {ChangePageAction} from './change-page.action';
 import {FilterCategoryAction} from './filter-category.action';
 import {ChangeTermAction} from './change-term.action';
 import {ChangePriceAction} from './change-price.action';
 import {createReducer} from '../build.reducer';
+import {ProductFilterQuery} from '../../products/product-list/product-filter-query';
+import {Pagination} from '../../products/product-list/pagination';
 
 export interface ProductsState {
   items: Product[];

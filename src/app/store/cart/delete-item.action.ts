@@ -15,31 +15,51 @@ export class DeleteItemAction implements Action {
       .indexOf(action.product.id);
 
     if(index === -1){
+      console.error('Not found item to remove');
       return state;
     }
 
-    let items;
     const productValue = state.items[index].product.price;
+    const items = this.getChangedItems(state, index);
+    const newTotalCount = state.totalCount - 1;
+    const newTotalValue = state.totalValue.value - productValue.value;
 
-    if(state.items[index].amount === 1){
-      items = [
-        ...state.items.slice(0, index),
-        ...state.items.slice(index + 1)
-      ];
-    }
-    else {
-      items = [
-        ...state.items.slice(0, index),
-        Object.assign({}, state.items[index], {
-          amount: state.items[index].amount - 1
-        }),
-        ...state.items.slice(index + 1)];
-    }
+    return {
+      ...state, items,
+      totalCount: newTotalCount,
+      totalValue: {
+        ...state.totalValue,
+        value: newTotalValue
+      }
+    };
+  }
 
-    return {...state, items, totalCount: state.totalCount - 1, totalValue: {
-      ...state.totalValue,
-      value: state.totalValue.value - productValue.value
-    }};
+  private static getChangedItems(state: CartState, index: number) {
+    let items;
+
+    if (state.items[index].amount === 1) {
+      items = this.removeItem(items, state, index);
+    } else {
+      items = this.decreaseItemAmount(state, index);
+    }
+    return items;
+  }
+
+  private static decreaseItemAmount(state: CartState, index: number) {
+    return [
+      ...state.items.slice(0, index),
+      Object.assign({}, state.items[index], {
+        amount: state.items[index].amount - 1
+      }),
+      ...state.items.slice(index + 1)];
+  }
+
+  private static removeItem(items, state: CartState, index: number) {
+    items = [
+      ...state.items.slice(0, index),
+      ...state.items.slice(index + 1)
+    ];
+    return items;
   }
 
   constructor(public product: Product) { }
