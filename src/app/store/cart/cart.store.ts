@@ -3,6 +3,7 @@ import {createReducer} from '../build.reducer';
 import {Price} from '../../products/price';
 import {AddItemAction} from './add-item.action';
 import {DeleteItemAction} from './delete-item.action';
+import {ResetCartAction} from './reset-cart.action';
 
 export interface CartState {
   items: CartItem[];
@@ -10,7 +11,7 @@ export interface CartState {
   totalValue: Price;
 }
 
-const initState: CartState = {
+export const initState: CartState = {
   items: [],
   totalCount: 0,
   totalValue: {
@@ -21,7 +22,8 @@ const initState: CartState = {
 
 export const reducer = createReducer(initState,
   DeleteItemAction,
-  AddItemAction
+  AddItemAction,
+  ResetCartAction,
 );
 
 export function CartReducer(state, action) {

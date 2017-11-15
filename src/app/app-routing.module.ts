@@ -9,6 +9,7 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {OrdersComponent} from './admin/orders/orders.component';
 import {ProductsComponent} from './admin/products/products.component';
 import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
+import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'checkout-done',
+    component: CheckoutDoneComponent,
   },
   {
     path: 'login',

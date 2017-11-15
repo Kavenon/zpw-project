@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Order} from '../../checkout/order';
 import {Injectable} from '@angular/core';
 import 'rxjs/add/observable/from';
+import {API} from '../../config';
 
 @Injectable()
 export class OrderService {
@@ -11,27 +12,12 @@ export class OrderService {
   }
 
   getAll(): Observable<Order[]> {
+    return this.http.get(API + '/orders.json').map((data) => {
+      return Object.keys(data).map(key => data[key]);
+    });
+  }
 
-    const order: Order = {
-      id: 1,
-      name: 'Test',
-      surname: 'Test2',
-      totalValue: {
-        value: 10,
-        currency: 'USD',
-      },
-      items: [
-        {
-          name: 'produkt',
-          price: {
-            value: 10,
-            currency: 'USD',
-          },
-          amount: 1
-        }
-      ]
-    };
-    return Observable.of([order]);
-
+  saveOrder(order: Order): Observable<Object> {
+    return this.http.post(API + '/orders.json', order);
   }
 }

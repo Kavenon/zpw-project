@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ProductFormComponent} from './admin/products/product-form/product-form.component';
 import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
 import {AdminProductsListComponent} from './admin/products/products-list/products-list.component';
+import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {AdminProductsListComponent} from './admin/products/products-list/product
     ProductsComponent,
     ProductFormComponent,
     ProductEditComponent,
+    CheckoutDoneComponent,
   ],
   imports: [
     BrowserModule,

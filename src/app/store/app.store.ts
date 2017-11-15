@@ -9,6 +9,7 @@ import {OrdersEffects} from '../admin/store/orders/orders.effects';
 import {OrdersReducer, OrdersState} from '../admin/store/orders/orders.store';
 import {AdminProductsEffects} from '../admin/store/products/products.effects';
 import {AdminProductsReducer, AdminProductsState} from '../admin/store/products/products.store';
+import {CartEffects} from './cart/cart-effects';
 
 export interface AppState {
   products: ProductsState;
@@ -34,4 +35,5 @@ export const AppEffects = [
   UserEffects,
   OrdersEffects,
   AdminProductsEffects,
+  CartEffects,
 ];
