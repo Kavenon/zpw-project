@@ -36,7 +36,7 @@ export class AuthService {
   getToken() {
     const currentUser = firebase.auth().currentUser;
     if (currentUser) {
-      return currentUser.getToken();
+      return currentUser.getIdToken();
     }
     return Promise.resolve(null);
   }

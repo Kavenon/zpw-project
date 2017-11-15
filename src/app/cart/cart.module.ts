@@ -9,12 +9,11 @@ import {CartService} from './cart.service';
     SharedModule
   ],
   exports: [
-    CartComponent,
     CartWidgetComponent,
   ],
   declarations: [
-    CartComponent,
     CartWidgetComponent,
+    CartComponent
   ],
   providers: [
     CartService

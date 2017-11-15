@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-admin-home',
-  templateUrl: './admin-home.component.html',
+  templateUrl: './home.component.html',
 })
-export class AdminHomeComponent {
+export class HomeComponent {
 
 }
