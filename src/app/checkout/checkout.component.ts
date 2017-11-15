@@ -17,11 +17,8 @@ export class CheckoutComponent {
     });
   }
 
-  checkoutSubmit() {
-    if (!this.checkoutForm.valid) {
-      return;
-    }
-    this.cartService.createOrder(this.checkoutForm.value);
+  onSubmit(checkoutForm) {
+    this.cartService.createOrder(checkoutForm);
   }
 
 }

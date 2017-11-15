@@ -2,21 +2,19 @@ import {Injectable} from '@angular/core';
 import {Product} from './product';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import {Pagination} from './products-list/pagination';
-import {ProductFilterQuery} from './products-list/product-filter-query';
+import {Pagination} from './product-list/pagination';
+import {ProductFilterQuery} from './product-list/product-filter-query';
 import {ProductResponse} from './product-response';
 import {HttpClient} from '@angular/common/http';
 import {API} from '../config';
 import 'rxjs/add/operator/map';
-import {AppState} from '../store/app.store';
-import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/filter';
 
 @Injectable()
 export class ProductService {
 
 
-  constructor(private http: HttpClient, private store: Store<AppState>) {
+  constructor(private http: HttpClient) {
   }
 
   getAllProducts(): Observable<ProductResponse> {
@@ -79,15 +77,6 @@ export class ProductService {
 
   }
 
-  getTotal(query: ProductFilterQuery): Promise<number> {
-
-    return this.getAllProducts()
-      .switchMap(data => {
-        const filtered = this.filterProducts(data.items, query);
-        return Observable.of(filtered.length);
-      }).toPromise();
-  }
-
   saveInFirebase(items: Product[]): Observable<Object> {
     console.log('saving in firebase', items);
     return this.http.put(API + '/products.json', items);
@@ -120,6 +109,5 @@ export class ProductService {
     return array.slice(start, end);
   }
   // ==========================================================================
-
 
 }

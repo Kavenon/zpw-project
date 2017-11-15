@@ -10,24 +10,8 @@
         (onCategoryClick)="onCategoryClick($event)"
         (onDeselectAll)="onDeselectAll()"></app-categories>
 
-      <div class="text-center mt-3">
-        Cena
-      </div>
-
-      <nouislider [connect]="true"
-                  [min]="0"
-                  [max]="500"
-                  [step]="10"
-                  [ngModel]="priceRange | async"
-                  (ngModelChange)="priceRangeChanged($event)"></nouislider>
-      <div>
-        <span class="pull-left">
-          {{(priceRange | async)[0]}}
-        </span>
-        <span class="pull-right">
-          {{(priceRange | async)[1]}}
-        </span>
-      </div>
+      <app-price-filter [priceRange]="priceRange | async" (onChange)="onPriceRangeChanged($event)">
+      </app-price-filter>
 
     </div>
 
@@ -45,8 +29,7 @@
 
         <app-product *ngFor="let product of products | async"
                      [product]="product"
-                      (onAddToCart)="addToCart($event)"
-        >
+                     (onAddToCart)="addToCart($event)">
         </app-product>
 
 

@@ -13,6 +13,7 @@ export class CartWidgetComponent implements OnInit {
 
   totalCount: Observable<number>;
   totalValue: Observable<Price>;
+
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {

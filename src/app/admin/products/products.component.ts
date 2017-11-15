@@ -36,5 +36,4 @@ export class ProductsComponent implements OnInit {
     this.store.dispatch(new EditProductAction());
   }
 
-
 }

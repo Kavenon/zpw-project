@@ -18,11 +18,11 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
 })
-export class ProductsListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   categories: Observable<Category[]>;
   products: Observable<Product[]>;
@@ -81,7 +81,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.store.dispatch(new AddItemAction(product, 1));
   }
 
-  priceRangeChanged(range){
+  onPriceRangeChanged(range) {
     this.rangeChanged.next(range);
   }
 }

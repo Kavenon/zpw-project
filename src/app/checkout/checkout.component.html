@@ -1,26 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 mx-auto">
-      <form class="mt-4" [formGroup]="checkoutForm" (ngSubmit)="checkoutSubmit()">
-        <div class="form-group">
-          <label>Imie i nazwisko</label>
-          <input type="text" class="form-control" formControlName="name">
-          <div class="invalid-feedback">
-            Proszę podać imie i nazwisko
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Nazwa ulicy</label>
-          <input type="text" class="form-control" formControlName="street">
-          <div class="invalid-feedback">
-            Proszę podać nazwę ulicy
-          </div>
-        </div>
-
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Dokończ zamówienie</button>
-        </div>
-      </form>
+      <app-checkout-form (onSubmit)="onSubmit($event)"></app-checkout-form>
     </div>
   </div>
 </div>

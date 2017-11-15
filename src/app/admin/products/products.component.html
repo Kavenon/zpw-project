@@ -6,9 +6,9 @@
         <button class="btn btn-primary" (click)="onAddProduct()">Dodaj produkt <i class="fa fa-plus"></i></button>
       </h2>
       <router-outlet>
-        <app-admin-products-list [products]="products$ | async"
-                                 (onDeleteProduct)="onDeleteProduct($event)"
-                                 (onEditProduct)="onEditProduct($event)"></app-admin-products-list>
+        <app-admin-product-list [products]="products$ | async"
+                                (onDeleteProduct)="onDeleteProduct($event)"
+                                (onEditProduct)="onEditProduct($event)"></app-admin-product-list>
 
       </router-outlet>
 

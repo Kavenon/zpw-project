@@ -11,23 +11,31 @@ export class SaveProductSuccessAction implements Action {
   static reduce(state: AdminProductsState, action: SaveProductSuccessAction) {
 
     if (action.isNew) {
-      return {...state, items: [...state.items, action.product]};
+      return this.appendNewProduct(state, action);
     } else {
       const index = state.items.map(item => item.id).indexOf(action.product.id);
       if (index === -1) {
         console.error('Could not find product to edit');
         return state;
       }
-      return {
-        ...state,
-        items: [
-          ...state.items.slice(0, index),
-          Object.assign({}, state.items[index], action.product),
-          ...state.items.slice(index + 1),
-        ]
-      };
+      return this.editProduct(state, index, action);
     }
 
+  }
+
+  private static editProduct(state: AdminProductsState, index: number, action: SaveProductSuccessAction) {
+    return {
+      ...state,
+      items: [
+        ...state.items.slice(0, index),
+        Object.assign({}, state.items[index], action.product),
+        ...state.items.slice(index + 1),
+      ]
+    };
+  }
+
+  private static appendNewProduct(state: AdminProductsState, action: SaveProductSuccessAction) {
+    return {...state, items: [...state.items, action.product]};
   }
 
   constructor(public product: Product, public isNew: boolean) {

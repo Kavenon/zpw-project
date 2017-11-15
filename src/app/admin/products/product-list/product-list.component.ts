@@ -2,10 +2,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../../products/product';
 
 @Component({
-  selector: 'app-admin-products-list',
-  templateUrl: './products-list.component.html',
+  selector: 'app-admin-product-list',
+  templateUrl: './product-list.component.html',
 })
-export class AdminProductsListComponent {
+export class ProductListComponent {
 
   @Input() products: Product[];
 

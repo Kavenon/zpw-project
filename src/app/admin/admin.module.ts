@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {AdminProductsListComponent} from './products/products-list/products-list.component';
 import {OrdersComponent} from './orders/orders.component';
 import {OrdersListComponent} from './orders/orders-list/orders-list.component';
 import {OrderDetailsComponent} from './orders/order-details/order-details.component';
@@ -10,6 +9,7 @@ import {HomeComponent} from './home/home.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ProductListComponent} from './products/product-list/product-list.component';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     HomeComponent,
     ProductsComponent,
     OrdersComponent,
-    AdminProductsListComponent,
+    ProductListComponent,
     OrdersListComponent,
     OrderDetailsComponent,
     ProductsComponent,

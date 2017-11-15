@@ -3,6 +3,7 @@ import {SharedModule} from '../shared.module';
 import {CartComponent} from './cart.component';
 import {CartWidgetComponent} from './cart-widget/cart-widget.component';
 import {CartService} from './cart.service';
+import {CartDetailsComponent} from './cart-details/cart-details.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {CartService} from './cart.service';
   ],
   declarations: [
     CartWidgetComponent,
-    CartComponent
+    CartComponent,
+    CartDetailsComponent
   ],
   providers: [
     CartService

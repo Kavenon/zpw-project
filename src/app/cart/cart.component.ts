@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
     this.totalValue = this.store.select(state => state.cart.totalValue);
   }
 
-  deleteItem(product: Product){
+  onDeleteItem(product: Product) {
     this.store.dispatch(new DeleteItemAction(product));
   }
 }

@@ -1,17 +1,18 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared.module';
-import {CategoriesComponent} from './products-list/categories/categories.component';
-import {ProductComponent} from './products-list/product/product.component';
 import {NouisliderModule} from 'ng2-nouislider';
-import {ProductsListComponent} from './products-list/products-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CategoriesComponent} from './product-list/categories/categories.component';
+import {ProductComponent} from './product-list/product/product.component';
+import {ProductListComponent} from './product-list/product-list.component';
+import {PriceFilterComponent} from './product-list/price-filter/price-filter.component';
 
 
 @NgModule({
   imports: [SharedModule, NouisliderModule, NgbModule.forRoot(),
   ],
   exports: [],
-  declarations: [CategoriesComponent, ProductComponent, ProductsListComponent],
+  declarations: [CategoriesComponent, ProductComponent, ProductListComponent, PriceFilterComponent],
   providers: [],
 })
 export class ProductsModule {

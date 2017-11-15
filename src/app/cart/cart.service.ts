@@ -13,24 +13,27 @@ export class CartService {
   createOrder(checkoutForm: CheckoutForm) {
     this.store.select(state => state.cart).take(1).subscribe(
       state => {
-        const order = {
-          id: new Date().getTime(),
-          name: checkoutForm.name,
-          street: checkoutForm.street,
-          totalValue: state.totalValue,
-          items: state.items.map(item => {
-            return {
-              name: item.product.name,
-              price: item.product.price,
-              amount: item.amount
-            };
-          })
-        };
+        const order = this.buildOrder(checkoutForm, state);
         this.store.dispatch(new SaveOrderAction(order));
       }
     );
   }
 
+  private buildOrder(checkoutForm: CheckoutForm, state) {
+    return {
+      id: new Date().getTime(),
+      name: checkoutForm.name,
+      street: checkoutForm.street,
+      totalValue: state.totalValue,
+      items: state.items.map(item => {
+        return {
+          name: item.product.name,
+          price: item.product.price,
+          amount: item.amount
+        };
+      })
+    };
+  }
 }
 
 
