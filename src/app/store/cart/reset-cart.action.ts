@@ -1,6 +1,7 @@
 import {Action} from '@ngrx/store';
 import {type} from '../type';
 import {CartState} from './cart.store';
+import {currencyType} from '../../products/price';
 
 export class ResetCartAction implements Action {
 
@@ -13,7 +14,7 @@ export class ResetCartAction implements Action {
       totalCount: 0,
       totalValue: {
         value: 0,
-        currency: 'USD'
+        currency: 'USD' as currencyType
       }
     });
   }

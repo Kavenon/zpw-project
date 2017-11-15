@@ -24,4 +24,12 @@ export class AuthService {
     return this.store.select(state => state.user.authorized);
   }
 
+  getToken() {
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      return currentUser.getToken();
+    }
+    return Promise.resolve(null);
+  }
+
 }

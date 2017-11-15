@@ -28,11 +28,12 @@ import {OrdersListComponent} from './admin/orders/orders-list/orders-list.compon
 import {OrderDetailsComponent} from './admin/orders/order-details/order-details.component';
 import {ProductsComponent} from './admin/products/products.component';
 import {OrderService} from './admin/orders/order.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProductFormComponent} from './admin/products/product-form/product-form.component';
 import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
 import {AdminProductsListComponent} from './admin/products/products-list/products-list.component';
 import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.component';
+import {AuthInterceptor} from './auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,12 @@ import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.comp
     }),
     NouisliderModule,
   ],
-  providers: [CategoryService, ProductService, CartService, AuthService, AuthGuard, OrderService],
+  providers: [CategoryService, ProductService, CartService, AuthService, AuthGuard, OrderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,6 @@ import {LogoutAction} from './logout.action';
 import * as firebase from 'firebase';
 import {LogoutSuccessAction} from './logout-success.action';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserEffects {
@@ -15,16 +14,10 @@ export class UserEffects {
     .ofType(LogoutAction.type)
     .switchMap(state =>
       firebase.auth().signOut()
-        .then(() => new LogoutSuccessAction()));
-
-  @Effect({
-    dispatch: false
-  }) logoutRedirect$ = this.action$
-    .ofType(LogoutSuccessAction.type)
-    .switchMap(state => {
-      this.router.navigate(['/login']);
-      return Observable.of({});
-    });
+        .then(() => {
+          this.router.navigate(['/login']);
+          return new LogoutSuccessAction();
+        }));
 
   constructor(private action$: Actions, private router: Router) {
   }
