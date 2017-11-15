@@ -17,11 +17,11 @@ export class ProductsComponent implements OnInit {
   products$: Observable<Product[]>;
 
   constructor(private store: Store<AppState>) {
-    console.log('init');
+
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadProductsAction()); // todo remove after return from edit?
+    this.store.dispatch(new LoadProductsAction());
     this.products$ = this.store.select(state => state.adminProducts.items);
   }
 

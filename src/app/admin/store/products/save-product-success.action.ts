@@ -14,7 +14,10 @@ export class SaveProductSuccessAction implements Action {
       return {...state, items: [...state.items, action.product]};
     } else {
       const index = state.items.map(item => item.id).indexOf(action.product.id);
-      console.log('index', index);
+      if (index === -1) {
+        console.error('Could not find product to edit');
+        return state;
+      }
       return {
         ...state,
         items: [
