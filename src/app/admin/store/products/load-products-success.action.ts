@@ -5,14 +5,14 @@ import {Product} from '../../../products/product';
 
 export class LoadProductsSuccessAction implements Action {
 
-  static type = type('products.LOAD_PRODUCTS_SUCCESS');
+  static type = type('products.admin.LOAD_PRODUCTS_SUCCESS');
   type = LoadProductsSuccessAction.type;
 
   static reduce(state: AdminProductsState, action: LoadProductsSuccessAction) {
     return {...state, items: action.products};
   }
 
-  constructor(public products: Product[], public total: number) {
+  constructor(public products: Product[]) {
   }
 
 }

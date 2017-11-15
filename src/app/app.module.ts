@@ -31,11 +31,13 @@ import {OrderService} from './admin/orders/order.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ProductFormComponent} from './admin/products/product-form/product-form.component';
 import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
+import {AdminProductsListComponent} from './admin/products/products-list/products-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsListComponent,
+    AdminProductsListComponent,
     CategoriesComponent,
     ProductComponent,
     CartComponent,

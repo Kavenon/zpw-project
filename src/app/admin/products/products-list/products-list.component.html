@@ -2,15 +2,18 @@
   <tr>
     <th>Nazwa</th>
     <th>Opis</th>
-    <th></th>
+    <th>Opcje</th>
   </tr>
   <tr *ngFor="let item of products">
     <td>{{item.name}}</td>
     <td>{{item.description}}</td>
-    <td>{{item.totalValue.value | currency: item.totalValue.currency}}</td>
-    <td>
-      <button class="btn btn-primary btn-sm" (click)="editProduct(item)">Szczegóły</button>
-      <button class="btn btn-primary btn-sm" (click)="deleteProduct(item)">Szczegóły</button>
+    <td class="text-right">
+      <button class="btn btn-primary btn-sm" (click)="editProduct(item)">
+        Edytuj <i class="fa fa-pencil"></i>
+      </button>
+      <button class="btn btn-danger btn-sm" (click)="deleteProduct(item)">
+        Usuń <i class="fa fa-trash"></i>
+      </button>
     </td>
   </tr>
 </table>

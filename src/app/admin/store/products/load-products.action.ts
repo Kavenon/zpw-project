@@ -4,7 +4,7 @@ import {type} from '../../../store/type';
 
 export class LoadProductsAction implements Action {
 
-  static type = type('products.LOAD_PRODUCTS');
+  static type = type('products.admin.LOAD_PRODUCTS');
   type = LoadProductsAction.type;
 
   static reduce(state: AdminProductsState, action: LoadProductsAction) {

@@ -5,6 +5,7 @@ import {Product} from '../../products/product';
 import {Observable} from 'rxjs/Observable';
 import {EditProductAction} from '../store/products/edit-product.action';
 import {DeleteProductAction} from '../store/products/delete-product.action';
+import {LoadProductsAction} from '../store/products/load-products.action';
 
 @Component({
   selector: 'app-products',
@@ -19,18 +20,19 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(new LoadProductsAction());
     this.products$ = this.store.select(state => state.adminProducts.items);
   }
 
-  editProduct(product: Product) {
+  onEditProduct(product: Product) {
     this.store.dispatch(new EditProductAction(product.id));
   }
 
-  deleteProduct(product: Product) {
+  onDeleteProduct(product: Product) {
     this.store.dispatch(new DeleteProductAction(product.id));
   }
 
-  addProduct() {
+  onAddProduct() {
     this.store.dispatch(new EditProductAction());
   }
 

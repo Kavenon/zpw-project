@@ -17,18 +17,45 @@ export class ProductService {
     });
   }
 
+  getProductToEdit(productId?: number): Observable<Product> {
+    if (!productId) {
+      return Observable.of({
+        id: null,
+        name: '',
+        description: '',
+        price: {
+          value: null,
+          currency: null,
+        },
+        categoryId: null
+      });
+    } else {
+      // todo http
+      return Observable.of({
+        id: 1,
+        name: 'Edycja',
+        description: 'Edycja',
+        price: {
+          value: 10,
+          currency: 'USD',
+        },
+        categoryId: 1
+      });
+    }
+  }
   deleteProduct(productId: number): Observable<Object> {
     return Observable.of({});
     // todo: relete
   }
 
-  saveProduct(product: Product) {
+  saveProduct(product: Product): Observable<Object> {
     if (product.id) {
       // update
     }
     else {
       // save
     }
+    return Observable.of({});
   }
 
   getProducts(query: ProductFilterQuery, pagination: Pagination): Observable<ProductResponse> {

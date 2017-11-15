@@ -9,7 +9,6 @@ export class LoadOrdersSuccessAction implements Action {
   type = LoadOrdersSuccessAction.type;
 
   static reduce(state: OrdersState, action: LoadOrdersSuccessAction) {
-    console.log(action.items);
     return {...state, items: action.items};
   }
 

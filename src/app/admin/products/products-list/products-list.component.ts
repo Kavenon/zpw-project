@@ -1,17 +1,17 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../../products/product';
 
 @Component({
-  selector: 'app-products-list',
+  selector: 'app-admin-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss']
 })
-export class ProductsListComponent implements OnInit {
+export class AdminProductsListComponent implements OnInit {
 
   @Input() products: Product[];
 
-  onEditProduct = new EventEmitter<Product>();
-  onDeleteProduct = new EventEmitter<Product>();
+  @Output() onEditProduct = new EventEmitter<Product>();
+  @Output() onDeleteProduct = new EventEmitter<Product>();
 
   constructor() {
   }
@@ -24,7 +24,9 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    this.onDeleteProduct.emit(product);
+    if (confirm('Czy jesteś pewien?')) {
+      this.onDeleteProduct.emit(product);
+    }
   }
 
 }

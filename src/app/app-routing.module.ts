@@ -8,7 +8,7 @@ import {LoginComponent} from './user/login/login.component';
 import {AuthGuard} from './auth/auth-guard.service';
 import {OrdersComponent} from './admin/orders/orders.component';
 import {ProductsComponent} from './admin/products/products.component';
-import {OrderDetailsComponent} from './admin/orders/order-details/order-details.component';
+import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
 
 const routes: Routes = [
   {
@@ -38,16 +38,24 @@ const routes: Routes = [
       {
         path: 'order',
         component: OrdersComponent,
-        children: [
-          {
-            path: ':id',
-            component: OrderDetailsComponent
-          }
-        ]
       },
       {
         path: 'product',
-        component: ProductsComponent,
+        children: [
+          {
+            path: 'list',
+            component: ProductsComponent,
+          },
+          {
+            path: 'upsert/:id',
+            component: ProductEditComponent
+          },
+          {
+            path: '',
+            redirectTo: '/admin/product/list',
+            pathMatch: 'full'
+          }
+        ]
       },
       {
         path: '',
