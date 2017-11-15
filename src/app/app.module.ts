@@ -1,4 +1,3 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
@@ -9,11 +8,8 @@ import {CategoryService} from './products/category.service';
 import {ProductComponent} from './products/products-list/product/product.component';
 import {ProductService} from './products/product.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {CartComponent} from './cart/cart.component';
-import {CartWidgetComponent} from './cart/cart-widget/cart-widget.component';
-import {CartService} from './cart/cart.service';
 import {CheckoutComponent} from './checkout/checkout.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {AppEffects, AppReducers} from './store/app.store';
 import {EffectsModule} from '@ngrx/effects';
@@ -28,12 +24,14 @@ import {OrdersListComponent} from './admin/orders/orders-list/orders-list.compon
 import {OrderDetailsComponent} from './admin/orders/order-details/order-details.component';
 import {ProductsComponent} from './admin/products/products.component';
 import {OrderService} from './admin/orders/order.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ProductFormComponent} from './admin/products/product-form/product-form.component';
 import {ProductEditComponent} from './admin/products/product-edit/product-edit.component';
 import {AdminProductsListComponent} from './admin/products/products-list/products-list.component';
 import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.component';
 import {AuthInterceptor} from './auth-interceptor';
+import {CoreModule} from './core/core.module';
+import {SharedModule} from './shared.module';
 
 @NgModule({
   declarations: [
@@ -42,8 +40,6 @@ import {AuthInterceptor} from './auth-interceptor';
     AdminProductsListComponent,
     CategoriesComponent,
     ProductComponent,
-    CartComponent,
-    CartWidgetComponent,
     CheckoutComponent,
     AdminHomeComponent,
     LoginComponent,
@@ -56,10 +52,9 @@ import {AuthInterceptor} from './auth-interceptor';
     CheckoutDoneComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
+    CoreModule,
+    SharedModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
     StoreModule.forRoot(AppReducers),
@@ -69,7 +64,7 @@ import {AuthInterceptor} from './auth-interceptor';
     }),
     NouisliderModule,
   ],
-  providers: [CategoryService, ProductService, CartService, AuthService, AuthGuard, OrderService,
+  providers: [CategoryService, ProductService, AuthService, AuthGuard, OrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

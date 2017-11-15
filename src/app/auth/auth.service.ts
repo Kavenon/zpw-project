@@ -6,11 +6,20 @@ import {LoginAction} from '../store/user/login.action';
 import {LoginFailAction} from '../store/user/login-fail.action';
 import {LoginSuccessAction} from '../store/user/login-success.action';
 import 'rxjs/add/operator/take';
+import {LogoutSuccessAction} from '../store/user/logout-success.action';
 
 @Injectable()
 export class AuthService {
 
   constructor(private store: Store<AppState>) {
+  }
+
+  onAuthChanged(user) {
+    if (user) {
+      this.store.dispatch(new LoginSuccessAction());
+    } else {
+      this.store.dispatch(new LogoutSuccessAction());
+    }
   }
 
   login(email: string, password: string) {
