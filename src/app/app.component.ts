@@ -10,7 +10,6 @@ import {LogoutSuccessAction} from './store/user/logout-success.action';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
@@ -29,8 +28,7 @@ export class AppComponent implements OnInit {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.store.dispatch(new LoginSuccessAction());
-      }
-      else {
+      } else {
         this.store.dispatch(new LogoutSuccessAction());
       }
     });

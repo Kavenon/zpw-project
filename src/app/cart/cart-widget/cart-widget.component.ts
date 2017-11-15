@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Price} from '../../products/price';
-import {CartService} from '../cart.service';
 import {Observable} from 'rxjs/Observable';
 import {AppState} from '../../store/app.store';
 import {Store} from '@ngrx/store';

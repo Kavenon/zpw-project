@@ -1,23 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../../products/product';
 
 @Component({
   selector: 'app-admin-products-list',
   templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
 })
-export class AdminProductsListComponent implements OnInit {
+export class AdminProductsListComponent {
 
   @Input() products: Product[];
 
   @Output() onEditProduct = new EventEmitter<Product>();
   @Output() onDeleteProduct = new EventEmitter<Product>();
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
   editProduct(product: Product) {
     this.onEditProduct.emit(product);
