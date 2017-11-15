@@ -20,7 +20,6 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
 

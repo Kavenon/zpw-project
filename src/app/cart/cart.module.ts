@@ -4,10 +4,12 @@ import {CartComponent} from './cart.component';
 import {CartWidgetComponent} from './cart-widget/cart-widget.component';
 import {CartService} from './cart.service';
 import {CartDetailsComponent} from './cart-details/cart-details.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     CartWidgetComponent,

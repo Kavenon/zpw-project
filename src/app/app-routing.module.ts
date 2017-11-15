@@ -5,12 +5,12 @@ import {CheckoutComponent} from './checkout/checkout.component';
 import {AuthGuard} from './auth/auth-guard.service';
 import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.component';
 import {LoginComponent} from './auth/login/login.component';
-import {ProductsListComponent} from './products/products-list/products-list.component';
+import {ProductListComponent} from './products/product-list/product-list.component';
 
 const routes: Routes = [
   {
     path: 'list',
-    component: ProductsListComponent
+    component: ProductListComponent
   },
   {
     path: 'cart',
