@@ -25,7 +25,7 @@ export class ProductService {
         description: '',
         price: {
           value: null,
-          currency: null,
+          currency: 'USD',
         },
         categoryId: null
       });
@@ -48,14 +48,14 @@ export class ProductService {
     // todo: relete
   }
 
-  saveProduct(product: Product): Observable<Object> {
+  saveProduct(product: Product): Observable<Product> {
     if (product.id) {
       // update
     }
     else {
       // save
     }
-    return Observable.of({});
+    return Observable.of(product);
   }
 
   getProducts(query: ProductFilterQuery, pagination: Pagination): Observable<ProductResponse> {

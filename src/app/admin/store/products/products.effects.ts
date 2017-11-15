@@ -49,7 +49,7 @@ export class AdminProductsEffects {
       this.productService.saveProduct(action.product)
         .switchMap((result: Product) => {
           this.router.navigate(['/admin/product']);
-          return Observable.of(new SaveProductSuccessAction());
+          return Observable.of(new SaveProductSuccessAction(result, action.product.id === null));
         })
     );
 
