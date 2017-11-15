@@ -10,7 +10,7 @@
       <app-cart-details [items]="items | async" (onDeleteItem)="onDeleteItem($event)"></app-cart-details>
 
       <div class="col-lg-12 text-center">
-        <button class="btn btn-info" routerLink="/">Kontynuuj zakupy</button>
+        <button class="btn btn-primary" routerLink="/">Kontynuuj zakupy</button>
         <button class="btn btn-primary" routerLink="/checkout" [disabled]="(items | async).length === 0">Złóż zamówienie</button>
       </div>
     </div>

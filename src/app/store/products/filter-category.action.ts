@@ -8,7 +8,7 @@ export class FilterCategoryAction implements Action {
   type = FilterCategoryAction.type;
 
   static reduce(state: ProductsState, action: FilterCategoryAction) {
-    const categories = this.getChangedItems(action, state);
+    const categories = FilterCategoryAction.getChangedItems(action, state);
     return {...state, query: {...state.query, categories}};
   }
 

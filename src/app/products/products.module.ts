@@ -6,10 +6,11 @@ import {CategoriesComponent} from './product-list/categories/categories.componen
 import {ProductComponent} from './product-list/product/product.component';
 import {ProductListComponent} from './product-list/product-list.component';
 import {PriceFilterComponent} from './product-list/price-filter/price-filter.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
-  imports: [SharedModule, NouisliderModule, NgbModule.forRoot(),
+  imports: [SharedModule, NouisliderModule, NgbModule.forRoot(), RouterModule
   ],
   exports: [],
   declarations: [CategoriesComponent, ProductComponent, ProductListComponent, PriceFilterComponent],

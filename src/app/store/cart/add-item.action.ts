@@ -14,7 +14,7 @@ export class AddItemAction implements Action {
       .map(item => item.product.id)
       .indexOf(action.product.id);
 
-    const items = this.getChangedItems(index, state, action);
+    const items = AddItemAction.getChangedItems(index, state, action);
     const newTotalValue = state.totalValue.value + (action.product.price.value * action.amount);
     const newTotalCount = state.totalCount + action.amount;
 
@@ -32,9 +32,9 @@ export class AddItemAction implements Action {
   private static getChangedItems(index: number, state: CartState, action: AddItemAction) {
     let items;
     if (index === -1) {
-      items = this.appendNewItem(state, action)
+      items = AddItemAction.appendNewItem(state, action)
     } else {
-      items = this.changeItem(state, index, action);
+      items = AddItemAction.changeItem(state, index, action);
     }
     return items;
   }

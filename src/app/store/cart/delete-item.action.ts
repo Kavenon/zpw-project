@@ -20,7 +20,7 @@ export class DeleteItemAction implements Action {
     }
 
     const productValue = state.items[index].product.price;
-    const items = this.getChangedItems(state, index);
+    const items = DeleteItemAction.getChangedItems(state, index);
     const newTotalCount = state.totalCount - 1;
     const newTotalValue = state.totalValue.value - productValue.value;
 
@@ -38,9 +38,9 @@ export class DeleteItemAction implements Action {
     let items;
 
     if (state.items[index].amount === 1) {
-      items = this.removeItem(items, state, index);
+      items = DeleteItemAction.removeItem(items, state, index);
     } else {
-      items = this.decreaseItemAmount(state, index);
+      items = DeleteItemAction.decreaseItemAmount(state, index);
     }
     return items;
   }
