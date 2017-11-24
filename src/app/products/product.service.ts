@@ -17,14 +17,14 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getAllProducts(): Observable<ProductResponse> {
+  getAllProducts(): Observable<Product[]> {
     return this.http.get(API + '/product/all');
   }
 
   getProductToEdit(productId?: string): Observable<Product> {
     if (!productId) {
       return Observable.of({
-        id: null,
+        _id: null,
         name: '',
         description: '',
         price: {
@@ -34,20 +34,20 @@ export class ProductService {
         categoryId: null
       });
     } else {
-      return this.http.get('/product/' + productId);
+      return this.http.get(API + '/product/' + productId);
     }
   }
 
   deleteProduct(productId: string): Observable<Object> {
-    return this.http.delete('/product/' + productId);
+    return this.http.delete(API + '/product/' + productId);
   }
 
   saveProduct(product: Product): Observable<Product> {
     const newProduct = Object.assign({}, product);
-    if (!newProduct.id) {
-      return this.http.post('/product', product);
+    if (!newProduct._id) {
+      return this.http.post(API + '/product', product);
     } else {
-      return this.http.put('/product/' + product.id, product);
+      return this.http.put(API + '/product/' + product._id, product);
     }
   }
 

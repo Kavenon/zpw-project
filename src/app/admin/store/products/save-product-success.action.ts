@@ -13,7 +13,7 @@ export class SaveProductSuccessAction implements Action {
     if (action.isNew) {
       return this.appendNewProduct(state, action);
     } else {
-      const index = state.items.map(item => item.id).indexOf(action.product.id);
+      const index = state.items.map(item => item._id).indexOf(action.product._id);
       if (index === -1) {
         console.error('Could not find product to edit');
         return state;

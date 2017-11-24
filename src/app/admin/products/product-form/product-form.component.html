@@ -1,5 +1,5 @@
 <form [formGroup]="productForm" (ngSubmit)="submit()">
-  <input type="hidden" formControlName="id"/>
+  <input type="hidden" formControlName="_id"/>
   <div class="form-group">
     <label>Nazwa</label>
     <input type="text" class="form-control" formControlName="name">
@@ -26,7 +26,7 @@
     <label>Kategoria</label>
     <select class="form-control" formControlName="categoryId">
       <option [value]="null">-</option>
-      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+      <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
     </select>
     <div class="invalid-feedback">
       Podaj kategorię produktu

@@ -16,7 +16,7 @@ export class ProductFormComponent implements OnInit {
 
   constructor() {
     this.productForm = new FormGroup({
-      'id': new FormControl(null),
+      '_id': new FormControl(null),
       'name': new FormControl(null, Validators.required),
       'description': new FormControl(null, Validators.required),
       'price': new FormGroup({
@@ -28,7 +28,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productForm.setValue(this.product);
+    this.productForm.patchValue(this.product);
   }
 
   submit() {

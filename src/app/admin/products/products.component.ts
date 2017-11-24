@@ -25,11 +25,11 @@ export class ProductsComponent implements OnInit {
   }
 
   onEditProduct(product: Product) {
-    this.store.dispatch(new EditProductAction(product.id));
+    this.store.dispatch(new EditProductAction(product._id));
   }
 
   onDeleteProduct(product: Product) {
-    this.store.dispatch(new DeleteProductAction(product.id));
+    this.store.dispatch(new DeleteProductAction(product._id));
   }
 
   onAddProduct() {

@@ -8,7 +8,7 @@ export class DeleteProductSuccessAction implements Action {
   type = DeleteProductSuccessAction.type;
 
   static reduce(state: AdminProductsState, action: DeleteProductSuccessAction) {
-    return {...state, items: state.items.filter((item) => item.id !== action.productId)};
+    return {...state, items: state.items.filter((item) => item._id !== action.productId)};
   }
 
   constructor(public productId: string) {

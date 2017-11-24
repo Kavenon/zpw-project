@@ -13,7 +13,6 @@ import {EditProductSuccessAction} from './edit-product-success.action';
 import {Product} from '../../../products/product';
 import {Router} from '@angular/router';
 import {SaveProductAction} from './save-product.action';
-import {SaveProductSuccessAction} from './save-product-success.action';
 import {AppState} from '../../../store/app.store';
 import {Store} from '@ngrx/store';
 
@@ -24,7 +23,7 @@ export class AdminProductsEffects {
     .ofType(LoadProductsAction.type)
     .switchMap((action) =>
       this.productService.getAllProducts()
-        .switchMap((result) => Observable.of(new LoadProductsSuccessAction(result.items)))
+        .switchMap((result) => Observable.of(new LoadProductsSuccessAction(result)))
     );
 
   @Effect() deleteProduct$ = this.action$
@@ -39,19 +38,19 @@ export class AdminProductsEffects {
     .switchMap((action: EditProductAction) =>
       this.productService.getProductToEdit(action.productId)
         .switchMap((result: Product) => {
-          this.router.navigate(['/admin/product/upsert', result.id || 'new']);
+          this.router.navigate(['/admin/product/upsert', result._id || 'new']);
           return Observable.of(new EditProductSuccessAction(result));
         })
     );
 
 
-  @Effect() saveProduct = this.action$
+  @Effect({dispatch: false}) saveProduct = this.action$
     .ofType(SaveProductAction.type)
     .switchMap((action: SaveProductAction) =>
       this.productService.saveProduct(action.product)
         .switchMap((result: Product) => {
-          // this.router.navigate(['/admin/product']); Todo: uncomment after db migration
-          return Observable.of(new SaveProductSuccessAction(result, action.product.id === null));
+          this.router.navigate(['/admin/product']);
+          return Observable.of({});
         })
     );
 

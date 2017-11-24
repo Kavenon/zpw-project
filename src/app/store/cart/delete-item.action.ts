@@ -11,8 +11,8 @@ export class DeleteItemAction implements Action {
   static reduce(state: CartState, action: DeleteItemAction) {
 
     const index = state.items
-      .map(item => item.product.id)
-      .indexOf(action.product.id);
+      .map(item => item.product._id)
+      .indexOf(action.product._id);
 
     if(index === -1){
       console.error('Not found item to remove');

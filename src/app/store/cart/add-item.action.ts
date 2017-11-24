@@ -11,8 +11,8 @@ export class AddItemAction implements Action {
   static reduce(state: CartState, action: AddItemAction) {
 
     const index = state.items
-      .map(item => item.product.id)
-      .indexOf(action.product.id);
+      .map(item => item.product._id)
+      .indexOf(action.product._id);
 
     const items = AddItemAction.getChangedItems(index, state, action);
     const newTotalValue = state.totalValue.value + (action.product.price.value * action.amount);
