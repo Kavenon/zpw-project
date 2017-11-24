@@ -11,7 +11,7 @@ export class DeleteProductAction implements Action {
     return state;
   }
 
-  constructor(public productId: number) {
+  constructor(public productId: string) {
   }
 
 }

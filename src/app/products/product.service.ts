@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 import {Pagination} from './product-list/pagination';
 import {ProductFilterQuery} from './product-list/product-filter-query';
 import {ProductResponse} from './product-response';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {API} from '../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
@@ -18,18 +18,10 @@ export class ProductService {
   }
 
   getAllProducts(): Observable<ProductResponse> {
-
-    return this.http.get(API + '/products.json')
-      .map((data: any[]) => {
-        return {
-          items: data,
-          total: data.length,
-        };
-      });
-
+    return this.http.get(API + '/product/all');
   }
 
-  getProductToEdit(productId?: number): Observable<Product> {
+  getProductToEdit(productId?: string): Observable<Product> {
     if (!productId) {
       return Observable.of({
         id: null,
@@ -42,38 +34,29 @@ export class ProductService {
         categoryId: null
       });
     } else {
-      return this.getAllProducts()
-        .switchMap(data => {
-          return Observable.of(data.items.find(product => product.id === productId));
-        });
+      return this.http.get('/product/' + productId);
     }
   }
 
-  deleteProduct(productId: number): Observable<Object> {
-    return Observable.of({});
+  deleteProduct(productId: string): Observable<Object> {
+    return this.http.delete('/product/' + productId);
   }
 
   saveProduct(product: Product): Observable<Product> {
     const newProduct = Object.assign({}, product);
     if (!newProduct.id) {
-      newProduct.id = new Date().getTime();
+      return this.http.post('/product', product);
+    } else {
+      return this.http.put('/product/' + product.id, product);
     }
-    return Observable.of(newProduct);
   }
 
   getProducts(query: ProductFilterQuery, pagination: Pagination): Observable<ProductResponse> {
 
-    return this.getAllProducts()
-      .switchMap(data => {
-        const filtered = this.filterProducts(data.items, query);
-        const start = (pagination.page - 1) * pagination.perPage;
-        const end = start + pagination.perPage;
-
-        return Observable.of({
-          items: this.subarray(filtered, start, end),
-          total: filtered.length
-        });
-      });
+    let httpParams = new HttpParams();
+    httpParams = httpParams.set('filter', (JSON.stringify(query)));
+    httpParams = httpParams.set('pagination', (JSON.stringify(pagination)));
+    return this.http.get(API + '/product', {params: httpParams});
 
   }
 

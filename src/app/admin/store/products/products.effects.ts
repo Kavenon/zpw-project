@@ -56,26 +56,26 @@ export class AdminProductsEffects {
     );
 
   // Todo: remove after migration to own database
-  @Effect({dispatch: false}) saveProductSuccess = this.action$
-    .ofType(SaveProductSuccessAction.type)
-    .withLatestFrom(this.store$)
-    .switchMap(([action, state]) =>
-      this.productService.saveInFirebase(state.adminProducts.items)
-        .switchMap((result: Product) => {
-          this.router.navigate(['/admin/product']);
-          return Observable.of({});
-        })
-    );
-
-  @Effect({dispatch: false}) deleteProductSuccess = this.action$
-    .ofType(DeleteProductSuccessAction.type)
-    .withLatestFrom(this.store$)
-    .switchMap(([action, state]) =>
-      this.productService.saveInFirebase(state.adminProducts.items)
-        .switchMap((result: Product) => {
-          return Observable.of({});
-        })
-    );
+  // @Effect({dispatch: false}) saveProductSuccess = this.action$
+  //   .ofType(SaveProductSuccessAction.type)
+  //   .withLatestFrom(this.store$)
+  //   .switchMap(([action, state]) =>
+  //     this.productService.saveInFirebase(state.adminProducts.items)
+  //       .switchMap((result: Product) => {
+  //         this.router.navigate(['/admin/product']);
+  //         return Observable.of({});
+  //       })
+  //   );
+  //
+  // @Effect({dispatch: false}) deleteProductSuccess = this.action$
+  //   .ofType(DeleteProductSuccessAction.type)
+  //   .withLatestFrom(this.store$)
+  //   .switchMap(([action, state]) =>
+  //     this.productService.saveInFirebase(state.adminProducts.items)
+  //       .switchMap((result: Product) => {
+  //         return Observable.of({});
+  //       })
+  //   );
 
   // ========================================================
 

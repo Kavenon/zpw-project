@@ -11,7 +11,7 @@ export class DeleteProductSuccessAction implements Action {
     return {...state, items: state.items.filter((item) => item.id !== action.productId)};
   }
 
-  constructor(public productId: number) {
+  constructor(public productId: string) {
   }
 
 }

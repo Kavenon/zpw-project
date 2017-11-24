@@ -61,7 +61,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   onCategoryClick(category) {
-    this.store.dispatch(new FilterCategoryAction(category.id));
+    this.store.dispatch(new FilterCategoryAction(category._id));
   }
 
   onDeselectAll() {

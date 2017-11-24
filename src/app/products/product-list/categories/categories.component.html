@@ -4,6 +4,7 @@
      tabindex="2"
      *ngFor="let category of categories"
      (click)="categoryClicked(category)"
-      [class.active]="activeCategories.indexOf(category.id) > -1"
+     [class.active]="activeCategories.indexOf(category._id) > -1"
   >{{category.name}}</a>
 </div>
+

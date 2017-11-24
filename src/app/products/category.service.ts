@@ -13,7 +13,7 @@ export class CategoryService {
 
   getCategories(): Observable<Category[]> {
     return this.http
-      .get(API + '/categories.json');
+      .get(API + '/category');
   }
 
 }
