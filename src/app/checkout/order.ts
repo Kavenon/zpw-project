@@ -1,7 +1,7 @@
 import {Price} from '../products/price';
 
 export interface Order {
-  id: number;
+  _id: number;
   name: string;
   street: string;
   totalValue: Price;

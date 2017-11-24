@@ -13,8 +13,6 @@ import {EditProductSuccessAction} from './edit-product-success.action';
 import {Product} from '../../../products/product';
 import {Router} from '@angular/router';
 import {SaveProductAction} from './save-product.action';
-import {AppState} from '../../../store/app.store';
-import {Store} from '@ngrx/store';
 
 @Injectable()
 export class AdminProductsEffects {
@@ -54,34 +52,8 @@ export class AdminProductsEffects {
         })
     );
 
-  // Todo: remove after migration to own database
-  // @Effect({dispatch: false}) saveProductSuccess = this.action$
-  //   .ofType(SaveProductSuccessAction.type)
-  //   .withLatestFrom(this.store$)
-  //   .switchMap(([action, state]) =>
-  //     this.productService.saveInFirebase(state.adminProducts.items)
-  //       .switchMap((result: Product) => {
-  //         this.router.navigate(['/admin/product']);
-  //         return Observable.of({});
-  //       })
-  //   );
-  //
-  // @Effect({dispatch: false}) deleteProductSuccess = this.action$
-  //   .ofType(DeleteProductSuccessAction.type)
-  //   .withLatestFrom(this.store$)
-  //   .switchMap(([action, state]) =>
-  //     this.productService.saveInFirebase(state.adminProducts.items)
-  //       .switchMap((result: Product) => {
-  //         return Observable.of({});
-  //       })
-  //   );
-
-  // ========================================================
-
-
   constructor(private action$: Actions,
               private productService: ProductService,
-              private router: Router,
-              private store$: Store<AppState>) {
+              private router: Router) {
   }
 }

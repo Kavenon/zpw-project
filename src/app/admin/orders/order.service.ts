@@ -12,12 +12,10 @@ export class OrderService {
   }
 
   getAll(): Observable<Order[]> {
-    return this.http.get(API + '/orders.json').map((data) => {
-      return Object.keys(data).map(key => data[key]);
-    });
+    return this.http.get(API + '/order');
   }
 
   saveOrder(order: Order): Observable<Object> {
-    return this.http.post(API + '/orders.json', order);
+    return this.http.post(API + '/order', order);
   }
 }

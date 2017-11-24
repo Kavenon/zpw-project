@@ -13,7 +13,6 @@ import 'rxjs/add/operator/filter';
 @Injectable()
 export class ProductService {
 
-
   constructor(private http: HttpClient) {
   }
 
@@ -59,38 +58,5 @@ export class ProductService {
     return this.http.get(API + '/product', {params: httpParams});
 
   }
-
-  saveInFirebase(items: Product[]): Observable<Object> {
-    console.log('saving in firebase', items);
-    return this.http.put(API + '/products.json', items);
-  }
-
-  // This is only used for mocked data. Will be removed after implementing API
-  // ==========================================================================
-  filterProducts(products: Product[], query: ProductFilterQuery){
-    return products
-      .filter(product => {
-        return this.matchesCategory(product, query);
-      })
-      .filter((product) => this.matchesName(product, query))
-      .filter(product => this.matchesPrice(product, query));
-  }
-
-  private matchesName(product: Product, query: ProductFilterQuery){
-    return !query.term || product.name.toLowerCase().indexOf(query.term.toLowerCase()) > -1 || product.description.toLowerCase().indexOf(query.term.toLowerCase()) > -1;
-  }
-
-  private matchesCategory(product: Product, query: ProductFilterQuery) {
-    return !query.categories || query.categories.length === 0 || query.categories.indexOf(product.categoryId) > -1;
-  }
-
-  private matchesPrice(product: Product, query: ProductFilterQuery) {
-    return product.price.value >= query.price[0] && product.price.value <= query.price[1];
-  }
-
-  private subarray(array: any[], start: number, end: number) {
-    return array.slice(start, end);
-  }
-  // ==========================================================================
 
 }
