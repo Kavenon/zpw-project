@@ -10,9 +10,13 @@ export class CartDetailsComponent {
 
   @Input() items: CartItem[];
   @Output() onDeleteItem = new EventEmitter<Product>();
+  @Output() onAddItem = new EventEmitter<Product>();
 
   deleteItem(product: Product) {
     this.onDeleteItem.emit(product);
   }
 
+  addItem(product: Product) {
+    this.onAddItem.emit(product);
+  }
 }

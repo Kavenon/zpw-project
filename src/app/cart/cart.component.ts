@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 import {DeleteItemAction} from '../store/cart/delete-item.action';
 import {Product} from '../products/product';
+import {AddItemAction} from '../store/cart/add-item.action';
 
 @Component({
   selector: 'app-cart',
@@ -26,5 +27,9 @@ export class CartComponent implements OnInit {
 
   onDeleteItem(product: Product) {
     this.store.dispatch(new DeleteItemAction(product));
+  }
+
+  onAddItem(product: Product) {
+    this.store.dispatch(new AddItemAction(product, 1));
   }
 }
