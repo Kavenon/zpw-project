@@ -1,6 +1,16 @@
+.product-imgs {
+  display: flex;
+  margin: 0 -10px;
+}
+
 .product-img {
   width: 50px;
+  height: 50px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   position: relative;
+  margin: 0 10px;
 
   &__remove {
     position: absolute;

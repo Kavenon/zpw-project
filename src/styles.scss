@@ -32,6 +32,6 @@ button:not(disabled) {
   background:#0062cc;
 }
 
-.dz-preview {
-  display: none !important;
+dropzone.dz-wrapper > .dropzone {
+  overflow: initial !important;
 }
