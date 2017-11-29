@@ -11,6 +11,8 @@
     <td>{{item.totalValue.value | currency: item.totalValue.currency: true}}</td>
     <td>
       <button class="btn btn-primary btn-sm" (click)="openDetails(item)">Szczegóły</button>
+      <button class="btn btn-primary btn-sm" (click)="doneOrder(item)" *ngIf="item.status === 'PENDING'">Zrealizuj
+      </button>
     </td>
   </tr>
 </table>

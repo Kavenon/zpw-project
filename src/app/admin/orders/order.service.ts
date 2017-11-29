@@ -15,7 +15,11 @@ export class OrderService {
     return this.http.get(API + '/order');
   }
 
-  saveOrder(order: Order): Observable<Object> {
+  saveOrder(order: Order): Observable<Order> {
     return this.http.post(API + '/order', order);
+  }
+
+  doneOrder(order: Order): Observable<Order> {
+    return this.http.post(API + '/order/' + order._id + '/done', {});
   }
 }

@@ -7,6 +7,8 @@ import {LoadOrdersSuccessAction} from './load-orders-success.action';
 import {Router} from '@angular/router';
 import {SaveOrderAction} from './save-order.action';
 import {SaveOrderSuccessAction} from './save-order-success.action';
+import {DoneOrderAction} from './done-order.action';
+import {DoneOrderSuccessAction} from './done-order-success.action';
 
 @Injectable()
 export class OrdersEffects {
@@ -25,6 +27,15 @@ export class OrdersEffects {
         .switchMap((result) => {
           this.router.navigate(['/checkout-done']);
           return Observable.of(new SaveOrderSuccessAction());
+        })
+    );
+
+  @Effect() doneOrder$ = this.action$
+    .ofType(DoneOrderAction.type)
+    .switchMap((action: DoneOrderAction) =>
+      this.orderService.doneOrder(action.order)
+        .switchMap((result) => {
+          return Observable.of(new DoneOrderSuccessAction(action.order));
         })
     );
 

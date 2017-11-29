@@ -3,6 +3,7 @@ import {CheckoutForm} from '../checkout/checkout-form';
 import {AppState} from '../store/app.store';
 import {Store} from '@ngrx/store';
 import {SaveOrderAction} from '../admin/store/orders/save-order.action';
+import {OrderStatus} from '../checkout/order';
 
 @Injectable()
 export class CartService {
@@ -31,7 +32,8 @@ export class CartService {
           price: item.product.price,
           amount: item.amount
         };
-      })
+      }),
+      status: 'PENDING' as OrderStatus
     };
   }
 }
