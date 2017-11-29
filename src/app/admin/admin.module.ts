@@ -10,12 +10,23 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ProductListComponent} from './products/product-list/product-list.component';
+import {DropzoneConfigInterface, DropzoneModule} from 'ngx-dropzone-wrapper';
+import {API} from '../config';
+import {CommonComponentsModule} from '../common-components.module';
+
+const DROPZONE_CONFIG: DropzoneConfigInterface = {
+  url: API + '/upload',
+  maxFilesize: 50,
+  acceptedFiles: 'image/*'
+};
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    DropzoneModule.forRoot(DROPZONE_CONFIG),
+    CommonComponentsModule
   ],
   exports: [],
   declarations: [

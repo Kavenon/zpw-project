@@ -30,7 +30,8 @@ export class ProductService {
           value: null,
           currency: 'USD',
         },
-        categoryId: null
+        categoryId: null,
+        photos: []
       });
     } else {
       return this.http.get(API + '/product/' + productId);

@@ -18,6 +18,7 @@ import {SharedModule} from './shared.module';
 import {ProductsModule} from './products/products.module';
 import {CheckoutModule} from './checkout/checkout.module';
 import {AuthModule} from './auth/auth.module';
+import {CommonComponentsModule} from './common-components.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {AuthModule} from './auth/auth.module';
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    CommonComponentsModule,
     StoreModule.forRoot(AppReducers),
     EffectsModule.forRoot(AppEffects),
     StoreDevtoolsModule.instrument({

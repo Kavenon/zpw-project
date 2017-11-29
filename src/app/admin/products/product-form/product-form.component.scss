@@ -1,0 +1,13 @@
+.product-img {
+  width: 50px;
+  position: relative;
+
+  &__remove {
+    position: absolute;
+    top: -11px;
+    right: -5px;
+    color: #c50000;
+    cursor: pointer;
+  }
+}
+
