@@ -27,11 +27,15 @@
                    (input)="onTermChanged($event.target.value)" />
           </div>
 
-        <app-product *ngFor="let product of products | async"
-                     [product]="product"
-                     (onAddToCart)="addToCart($event)">
-        </app-product>
-
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let product of products | async">
+            <app-product
+              [product]="product"
+              (onShowDetails)="showDetails($event)"
+              (onAddToCart)="addToCart($event)">
+            </app-product>
+          </div>
+        </div>
 
         <ngb-pagination [collectionSize]="(pagination | async).total"
                         [page]="(pagination | async).page"
