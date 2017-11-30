@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 import {AuthService} from './auth/auth.service';
+import {SocketService} from './core/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import {AuthService} from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private socketService: SocketService) {
+    this.socketService.init();
   }
 
   ngOnInit(): void {

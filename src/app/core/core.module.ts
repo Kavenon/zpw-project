@@ -3,6 +3,7 @@ import {HeaderComponent} from './header/header.component';
 import {SharedModule} from '../shared.module';
 import {CartModule} from '../cart/cart.module';
 import {RouterModule} from '@angular/router';
+import {SocketService} from './socket.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,9 @@ import {RouterModule} from '@angular/router';
   declarations: [
     HeaderComponent
   ],
-  providers: [],
+  providers: [
+    SocketService
+  ],
 })
 export class CoreModule {
 }
