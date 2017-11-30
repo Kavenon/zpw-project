@@ -29,6 +29,8 @@
     "core-js": "^2.4.1",
     "firebase": "^4.6.2",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.3",
     "ng2-nouislider": "^1.7.4",
     "ngx-dropzone-wrapper": "4.6.6",
     "nouislider": "^10.1.0",

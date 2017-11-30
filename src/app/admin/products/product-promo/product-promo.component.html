@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2 class="mt-4 d-flex justify-content-md-between">
+        Dodaj promocje
+      </h2>
+
+      <form [formGroup]="promoForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label>Zniżka</label>
+          <input type="number" class="form-control" formControlName="discount">
+          <div class="invalid-feedback">
+            Podaj zniżkę (1-100)%
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Czas trwania (minuty)</label>
+          <input type="number" class="form-control" formControlName="duration">
+          <div class="invalid-feedback">
+            Podaj prawidłowy czas trwania (>1)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Produkty</label>
+          <select class="form-control" formControlName="products" multiple>
+            <option *ngFor="let product of (products$ | async)" [value]="product._id">{{product.name}}</option>
+          </select>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" [disabled]="!promoForm.valid">Utwórz</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {API} from '../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import {Promo} from './promo';
 
 @Injectable()
 export class ProductService {
@@ -31,7 +32,11 @@ export class ProductService {
           currency: 'USD',
         },
         categoryId: null,
-        photos: []
+        photos: [],
+        promo: {
+          discount: 0,
+          until: 0
+        }
       });
     } else {
       return this.http.get(API + '/product/' + productId);
@@ -58,6 +63,10 @@ export class ProductService {
     httpParams = httpParams.set('pagination', (JSON.stringify(pagination)));
     return this.http.get(API + '/product', {params: httpParams});
 
+  }
+
+  createPromo(promo: Promo) {
+    return this.http.post(API + '/product/promo', promo);
   }
 
 }

@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {OrdersComponent} from './orders/orders.component';
 import {ProductsComponent} from './products/products.component';
 import {ProductEditComponent} from './products/product-edit/product-edit.component';
+import {ProductPromoComponent} from './products/product-promo/product-promo.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'product',
         children: [
+          {
+            path: 'promo',
+            component: ProductPromoComponent,
+          },
           {
             path: 'list',
             component: ProductsComponent,

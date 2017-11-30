@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {EditProductAction} from '../store/products/edit-product.action';
 import {DeleteProductAction} from '../store/products/delete-product.action';
 import {LoadProductsAction} from '../store/products/load-products.action';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
 
   products$: Observable<Product[]>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router) {
 
   }
 
@@ -34,6 +35,10 @@ export class ProductsComponent implements OnInit {
 
   onAddProduct() {
     this.store.dispatch(new EditProductAction());
+  }
+
+  onAddPromo() {
+    this.router.navigate(['/admin/product/promo']);
   }
 
 }

@@ -1,10 +1,18 @@
 <div class="card mb-4">
   <div class="card-body">
-    <img class="card-img-top " src="{{product.photos[0] | uploads}}" *ngIf="product.photos.length > 0">
+    <img class="card-img-top" src="{{product.photos[0] | uploads}}" *ngIf="product.photos.length > 0">
     <h4 class="card-title">
       <a tabindex="1">{{product.name}}</a>
     </h4>
-    <h5>{{product.price.value | currency: product.price.currency: true}}</h5>
+    <h5 *ngIf="isPromo()">
+      <span class="text-success">{{getDiscountedPrice() | currency: product.price.currency: true}}</span>
+      <small><s>{{product.price.value | currency: product.price.currency: true}}</s></small>
+      <br/>
+      <small class="text-secondary">Pozostało: {{timeLeftStr}}</small>
+    </h5>
+    <h5 *ngIf="!isPromo()">
+      {{product.price.value | currency: product.price.currency: true}}
+    </h5>
     <p class="card-text">{{product.description}}</p>
   </div>
   <div class="card-footer">

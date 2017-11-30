@@ -13,6 +13,7 @@ import {ProductListComponent} from './products/product-list/product-list.compone
 import {DropzoneConfigInterface, DropzoneModule} from 'ngx-dropzone-wrapper';
 import {API} from '../config';
 import {CommonComponentsModule} from '../common-components.module';
+import {ProductPromoComponent} from './products/product-promo/product-promo.component';
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: API + '/upload',
@@ -39,6 +40,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
     ProductsComponent,
     ProductFormComponent,
     ProductEditComponent,
+    ProductPromoComponent,
   ],
   providers: [],
 })

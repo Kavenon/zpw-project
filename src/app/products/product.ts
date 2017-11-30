@@ -7,4 +7,8 @@ export interface Product {
   price: Price;
   categoryId: number;
   photos: string[];
+  promo: {
+    discount: number;
+    until: number;
+  };
 }
