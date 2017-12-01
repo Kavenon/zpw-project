@@ -19,6 +19,8 @@ import {ProductsModule} from './products/products.module';
 import {CheckoutModule} from './checkout/checkout.module';
 import {AuthModule} from './auth/auth.module';
 import {CommonComponentsModule} from './common-components.module';
+import {NgSpinningPreloader} from 'ng2-spinning-preloader/src/ng-spinning-preloader.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {CommonComponentsModule} from './common-components.module';
     ProductsModule,
     CheckoutModule,
     AuthModule,
+    NgbModule.forRoot()
   ],
   providers: [
     CategoryService,
@@ -44,6 +47,7 @@ import {CommonComponentsModule} from './common-components.module';
     AuthService,
     AuthGuard,
     OrderService,
+    NgSpinningPreloader,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

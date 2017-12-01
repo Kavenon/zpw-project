@@ -1330,6 +1330,10 @@ cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
 
+csshake@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/csshake/-/csshake-1.5.2.tgz#6d15f3fab075201d79d138a1aa6396627d847724"
+
 "cssnano@>=2.6.1 <4", cssnano@^3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-3.10.0.tgz#4f38f6cea2b9b17fa01490f23f1dc68ea65c1c38"
@@ -3568,6 +3572,10 @@ negotiator@0.6.1:
 ng2-nouislider@^1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.7.4.tgz#4fabd6a642cadc78b0515e77bbd1b424f21ecd7b"
+
+ng2-spinning-preloader@^1.0.29:
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/ng2-spinning-preloader/-/ng2-spinning-preloader-1.0.29.tgz#d4c1a5dedd26f12913716e71067fda75c7686c70"
 
 ngx-dropzone-wrapper@4.6.6:
   version "4.6.6"

@@ -5,7 +5,7 @@
       Sklep Rowerowy
     </a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active" routerLink="/login" *ngIf="!(authorized | async)">
           <a class="nav-link">Login</a>
@@ -19,8 +19,8 @@
       </ul>
     </div>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
       <span class="navbar-toggler-icon"></span>
     </button>
 

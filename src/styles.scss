@@ -1,5 +1,8 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '~nouislider/distribute/nouislider.min.css';
+@import '~ng2-spinning-preloader/dist/ng-spinning-preloader.css';
+@import '~csshake/dist/csshake';
+
 
 body {
   padding-top: 54px;
@@ -41,3 +44,7 @@ dropzone.dz-wrapper > .dropzone {
 
 @import 'ribbon';
 @import 'toastr';
+
+.spinning-preloader-container {
+  z-index: 1000000;
+}

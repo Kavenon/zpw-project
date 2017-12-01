@@ -11,6 +11,7 @@ import {AppState} from '../../store/app.store';
 })
 export class HeaderComponent {
 
+  isCollapsed = false;
   authorized: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {

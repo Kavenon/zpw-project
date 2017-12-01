@@ -5,12 +5,14 @@ import {CartModule} from '../cart/cart.module';
 import {RouterModule} from '@angular/router';
 import {SocketService} from './socket.service';
 import {NotificationService} from './notification.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     SharedModule,
     CartModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   exports: [
     HeaderComponent,
