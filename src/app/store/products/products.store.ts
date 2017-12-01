@@ -31,7 +31,7 @@ const initState: ProductsState = {
   },
   pagination: {
     page: 1,
-    perPage: 1,
+    perPage: 3,
     total: 0
   }
 };

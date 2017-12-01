@@ -9,6 +9,9 @@ body {
   }
 }
 
+* {
+  outline: none;
+}
 .nav-item {
   cursor: pointer;
   &:focus {

@@ -13,10 +13,10 @@ import {NotificationService} from './notification.service';
     RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
   ],
   providers: [
     SocketService,

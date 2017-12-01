@@ -18,6 +18,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import {Subscription} from 'rxjs/Subscription';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProductDetailsComponent} from './product-details/product-details.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -35,7 +36,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   rangeChanged: Subject<number[]> = new Subject<number[]>();
   rangeChangedSubscription: Subscription;
 
-  constructor(private store: Store<AppState>, private modalService: NgbModal) {
+  constructor(private store: Store<AppState>, private modalService: NgbModal, private toastr: ToastrService) {
     this.rangeChangedSubscription =
       this.rangeChanged
         .debounceTime(200)
