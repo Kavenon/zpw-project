@@ -12,6 +12,7 @@ export interface Order {
 }
 
 export interface OrderItem {
+  _id: string;
   name: string;
   price: Price;
   amount: number;

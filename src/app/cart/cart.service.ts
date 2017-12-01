@@ -28,6 +28,7 @@ export class CartService {
       totalValue: state.totalValue,
       items: state.items.map(item => {
         return {
+          _id: item.product._id,
           name: item.product.name,
           price: item.product.price,
           amount: item.amount

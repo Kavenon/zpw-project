@@ -1,4 +1,5 @@
 <div class="card mb-4">
+  <div class="ribbon" *ngIf="product.amount <= 0"><span>Brak</span></div>
   <div class="card-body">
     <img class="card-img-top" src="{{product.photos[0] | uploads}}" *ngIf="product.photos.length > 0">
     <h4 class="card-title">
@@ -16,7 +17,7 @@
     <p class="card-text">{{product.description}}</p>
   </div>
   <div class="card-footer">
-    <button (click)="addToCard()" class="btn btn-primary btn-sm">
+    <button (click)="addToCard()" [disabled]="product.amount <= 0" class="btn btn-primary btn-sm">
       Dodaj do koszyka
     </button>
     <button (click)="showDetails(product)" class="btn btn-primary btn-sm pull-right" *ngIf="product.photos.length > 1">

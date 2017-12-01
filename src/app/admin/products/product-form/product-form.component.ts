@@ -27,6 +27,7 @@ export class ProductFormComponent implements OnInit {
         'currency': new FormControl(null, Validators.required),
       }),
       'categoryId': new FormControl(null, Validators.required),
+      'amount': new FormControl(0, Validators.required),
       'photos': new FormArray([])
     });
   }

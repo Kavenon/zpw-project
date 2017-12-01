@@ -11,4 +11,5 @@ export interface Product {
     discount: number;
     until: number;
   };
+  amount: number;
 }

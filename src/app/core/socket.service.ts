@@ -16,6 +16,8 @@ export class SocketService {
     console.log('SocketService init');
     const socket = sioc.connect(API);
     socket.on('messages', function (data) {
+
+
       console.log('socket', data);
     });
   }

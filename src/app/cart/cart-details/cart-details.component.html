@@ -9,7 +9,9 @@
   <tr *ngFor="let item of items">
     <td>
       <button class="btn btn-sm btn-primary btn-outline-primary" (click)="deleteItem(item.product)">-</button>
-      <button class="btn btn-sm btn-primary btn-outline-primary" (click)="addItem(item.product)">+</button>
+      <button class="btn btn-sm btn-primary btn-outline-primary" *ngIf="item.product.amount > item.amount"
+              (click)="addItem(item.product)">+
+      </button>
       {{item.amount}}
     </td>
     <td>{{item.product.name}}</td>
