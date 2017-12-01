@@ -36,4 +36,5 @@ dropzone.dz-wrapper > .dropzone {
   overflow: initial !important;
 }
 
-@import "ribbon";
+@import 'ribbon';
+@import 'toastr';

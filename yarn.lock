@@ -3575,6 +3575,10 @@ ngx-dropzone-wrapper@4.6.6:
   dependencies:
     dropzone "^5.1.0"
 
+ngx-toastr@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-7.0.2.tgz#ee1b51739bda7a6ffb5e711946762b9933565345"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
@@ -5459,6 +5463,10 @@ to-arraybuffer@^1.0.0:
 to-fast-properties@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
+
+toastr@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/toastr/-/toastr-2.1.2.tgz#fd69066ae7578a5b3357725fc9c7c335e9b681df"
 
 toposort@^1.0.0:
   version "1.0.6"
