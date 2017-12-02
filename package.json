@@ -4,5 +4,8 @@
   "version": "1.0.0",
   "engines": {
     "node": "6.11.1"
+  },
+  "scripts": {
+    "start": "cd server && npm install && cd .. && cd client && npm install && ng build --prod && cd .. && node server/index.js"
   }
 }
