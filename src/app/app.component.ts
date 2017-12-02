@@ -17,15 +17,17 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(_ => {
       this.ngSpinningPreloader.stop();
-    }, 1500);
+    }, 1000);
 
     firebase.initializeApp({
       apiKey: 'AIzaSyDGHByfVSel-XJT4_j6cf5wMUVJrWpOOR8',
       authDomain: 'zpw-project.firebaseapp.com'
     });
 
-    firebase.auth().onAuthStateChanged((user) =>
-      this.authService.onAuthChanged(user));
+    firebase.auth().onAuthStateChanged((user) => {
+      this.authService.onAuthChanged(user);
+    });
+
 
   }
 }

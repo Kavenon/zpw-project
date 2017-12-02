@@ -4,6 +4,8 @@ import {Price} from '../../products/price';
 import {AddItemAction} from './add-item.action';
 import {DeleteItemAction} from './delete-item.action';
 import {ResetCartAction} from './reset-cart.action';
+import {RestoreAction} from './restore.action';
+import {RestoreSuccessAction} from './restore-success.action';
 
 export interface CartState {
   items: CartItem[];
@@ -24,6 +26,8 @@ export const reducer = createReducer(initState,
   DeleteItemAction,
   AddItemAction,
   ResetCartAction,
+  RestoreAction,
+  RestoreSuccessAction
 );
 
 export function CartReducer(state, action) {

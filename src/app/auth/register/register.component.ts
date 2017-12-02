@@ -13,10 +13,6 @@ export class RegisterComponent {
   }
 
   onSubmit(authData) {
-    if (authData.email.indexOf('admin') > -1) {
-      this.toast.error('Niedozwolony adres email');
-      return;
-    }
     this.authService
       .register(authData.email, authData.password)
       .then(_ => this.router.navigate(['/login']));

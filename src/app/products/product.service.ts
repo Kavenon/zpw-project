@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get(API + '/product/all');
+    return this.http.get(API + '/admin/product/all');
   }
 
   getProductToEdit(productId?: string): Observable<Product> {
@@ -39,20 +39,20 @@ export class ProductService {
         }
       });
     } else {
-      return this.http.get(API + '/product/' + productId);
+      return this.http.get(API + '/admin/product/' + productId);
     }
   }
 
   deleteProduct(productId: string): Observable<Object> {
-    return this.http.delete(API + '/product/' + productId);
+    return this.http.delete(API + '/admin/product/' + productId);
   }
 
   saveProduct(product: Product): Observable<Product> {
     const newProduct = Object.assign({}, product);
     if (!newProduct._id) {
-      return this.http.post(API + '/product', product);
+      return this.http.post(API + '/admin/product', product);
     } else {
-      return this.http.put(API + '/product/' + product._id, product);
+      return this.http.put(API + '/admin/product/' + product._id, product);
     }
   }
 
@@ -66,7 +66,7 @@ export class ProductService {
   }
 
   createPromo(promo: Promo) {
-    return this.http.post(API + '/product/promo', promo);
+    return this.http.post(API + '/admin/product/promo', promo);
   }
 
 }
