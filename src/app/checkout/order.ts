@@ -4,6 +4,7 @@ export type OrderStatus = 'PENDING' | 'DONE';
 
 export interface Order {
   _id: number;
+  uid: string;
   name: string;
   street: string;
   totalValue: Price;

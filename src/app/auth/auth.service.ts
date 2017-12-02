@@ -16,21 +16,33 @@ export class AuthService {
 
   onAuthChanged(user) {
     if (user) {
-      this.store.dispatch(new LoginSuccessAction());
+      this.store.dispatch(new LoginSuccessAction(user));
     } else {
       this.store.dispatch(new LogoutSuccessAction());
     }
   }
 
+  register(email: string, password: string) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
+  }
+
   login(email: string, password: string) {
     this.store.dispatch(new LoginAction());
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => this.store.dispatch(new LoginSuccessAction()))
+      .then((user) => this.store.dispatch(new LoginSuccessAction(user)))
       .catch(() => this.store.dispatch(new LoginFailAction()));
   }
 
   isAuth() {
     return this.store.select(state => state.user.authorized);
+  }
+
+  isAdmin() {
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      return currentUser.email.indexOf('admin') > -1;
+    }
+    return false;
   }
 
   getToken() {

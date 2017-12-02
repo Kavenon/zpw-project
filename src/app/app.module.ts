@@ -21,6 +21,7 @@ import {AuthModule} from './auth/auth.module';
 import {CommonComponentsModule} from './common-components.module';
 import {NgSpinningPreloader} from 'ng2-spinning-preloader/src/ng-spinning-preloader.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AdminGuard} from './auth/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CategoryService,
     ProductService,
     AuthService,
+    AdminGuard,
     AuthGuard,
     OrderService,
     NgSpinningPreloader,

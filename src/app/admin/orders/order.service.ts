@@ -22,4 +22,8 @@ export class OrderService {
   doneOrder(order: Order): Observable<Order> {
     return this.http.post(API + '/order/' + order._id + '/done', {});
   }
+
+  getForUser(): Observable<Order> {
+    return this.http.get(API + '/order/me');
+  }
 }

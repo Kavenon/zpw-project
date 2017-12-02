@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {LogoutAction} from '../../store/user/logout.action';
 import {AppState} from '../../store/app.store';
+import {UserState} from '../../store/user/user.store';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,10 @@ import {AppState} from '../../store/app.store';
 export class HeaderComponent {
 
   isCollapsed = false;
-  authorized: Observable<boolean>;
+  user: Observable<UserState>;
 
   constructor(private store: Store<AppState>) {
-    this.authorized = this.store.select(state => state.user.authorized);
+    this.user = this.store.select(state => state.user);
   }
 
   logout() {

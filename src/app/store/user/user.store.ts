@@ -9,10 +9,12 @@ export interface UserState {
   authorized: boolean;
   loading: boolean;
   error: string;
+  admin: boolean;
 }
 
 const initState: UserState = {
   authorized: false,
+  admin: false,
   loading: false,
   error: null,
 };

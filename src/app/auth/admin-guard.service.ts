@@ -5,20 +5,18 @@ import {AuthService} from './auth.service';
 import 'rxjs/add/operator/do';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) {
 
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-    return this.authService.isAuth()
-      .do((authorized) => {
-        if (!authorized) {
-          this.router.navigate(['/login']);
-        }
-      });
+    const admin = this.authService.isAdmin();
+    if (!admin) {
+      this.router.navigate(['/login']);
     }
+    return admin;
+  }
 
 }

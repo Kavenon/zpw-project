@@ -23,6 +23,7 @@ export class CartService {
   private buildOrder(checkoutForm: CheckoutForm, state) {
     return {
       _id: new Date().getTime(),
+      uid: null,
       name: checkoutForm.name,
       street: checkoutForm.street,
       totalValue: state.totalValue,

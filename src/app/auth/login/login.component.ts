@@ -22,10 +22,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.error$ = this.store.select(state => state.user.error);
     this.loading$ = this.store.select(state => state.user.loading);
-    this.subscription = this.store.select(state => state.user.authorized)
-      .subscribe((authenticated) => {
-        if (authenticated) {
+    this.subscription = this.store.select(state => state.user)
+      .subscribe((user) => {
+        if (user.authorized && user.admin) {
           this.router.navigate(['/admin', 'home']);
+        } else if (user.authorized && !user.admin) {
+          this.router.navigate(['/']);
         }
       });
   }

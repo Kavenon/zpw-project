@@ -6,6 +6,9 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {CheckoutDoneComponent} from './checkout/checkout-done/checkout-done.component';
 import {LoginComponent} from './auth/login/login.component';
 import {ProductListComponent} from './products/product-list/product-list.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {AdminGuard} from './auth/admin-guard.service';
+import {CheckoutHistoryComponent} from './checkout/checkout-history/checkout-history.component';
 
 const routes: Routes = [
   {
@@ -29,9 +32,18 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'history',
+    component: CheckoutHistoryComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule',
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: '',
