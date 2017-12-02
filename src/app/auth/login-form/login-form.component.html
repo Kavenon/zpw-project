@@ -25,4 +25,10 @@
   <div class="text-center">
     <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">OK</button>
   </div>
+  <div class="text-center mt-4">
+    <small>wejdź z facebookiem
+      <button type="button" (click)="fbLogin()" class="btn btn-sm btn-primary"><i class="fa fa-facebook"></i> Facebook
+      </button>
+    </small>
+  </div>
 </form>

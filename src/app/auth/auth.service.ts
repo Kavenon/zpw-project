@@ -53,4 +53,10 @@ export class AuthService {
     return Promise.resolve(null);
   }
 
+  loginFb() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then((user) => this.store.dispatch(new LoginSuccessAction(user)))
+      .catch(() => this.store.dispatch(new LoginFailAction()));
+  }
 }
