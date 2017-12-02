@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import * as sioc from 'socket.io-client';
 import {AppState} from '../store/app.store';
 import {Store} from '@ngrx/store';
-import {API} from '../config';
 import {NotifyProductCreatedAction} from '../store/products/notifications/notify-product-created.action';
 import {NotifyProductChangedAction} from '../store/products/notifications/notify-product-changed.action';
 import {NotifyProductPromotedAction} from '../store/products/notifications/notify-product-promoted.action';
@@ -19,7 +18,7 @@ export class SocketService {
 
   init() {
     console.log('SocketService init');
-    const socket = sioc.connect(API);
+    const socket = sioc.connect('/ws', {path: '/ws'});
     socket.on('messages', (data) => {
 
       switch (data.type) {
