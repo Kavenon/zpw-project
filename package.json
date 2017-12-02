@@ -5,7 +5,11 @@
   "engines": {
     "node": "6.11.1"
   },
+  "dependencies": {
+    "client": "file:client",
+    "server": "file:server"
+  },
   "scripts": {
-    "start": "cd server && npm install && cd .. && cd client && npm install && ng build --prod && cd .. && node server/index.js"
+    "start": "node server/index.js"
   }
 }
