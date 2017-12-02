@@ -10,6 +10,7 @@
     "server": "file:server"
   },
   "scripts": {
+    "postinstall": "cd client && ng build --prod",
     "start": "node server/index.js"
   }
 }
