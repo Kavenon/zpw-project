@@ -6,7 +6,8 @@ const server = require('http').createServer(app);
 const authGuard = require('./auth-guard');
 const authAdmin = require('./auth-admin');
 
-app.use('/uploads', express.static('uploads'));
+app.use(express.static('client/dist'));
+app.use('/api/uploads', express.static('uploads'));
 app.use(busboyBodyParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json()); // parse application/json
@@ -52,9 +53,11 @@ app.use(require('./product.route'));
 app.use(require('./category.route'));
 app.use(require('./upload.route'));
 app.use(require('./cart.route'));
-app.use(express.static('../client/dist'));
 
 require('./socket').init(server);
 
+app.get('*', function (req, res) {
+    res.redirect('/');
+});
 
 server.listen(5000);
