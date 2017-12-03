@@ -1,0 +1,60 @@
+<form [formGroup]="productForm" (ngSubmit)="submit()">
+    <input type="hidden" formControlName="_id"/>
+    <div class="form-group">
+        <label>Nazwa</label>
+        <input type="text" class="form-control" formControlName="name">
+        <div class="invalid-feedback">
+            Podaj nazwę produktu
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Opis</label>
+        <textarea class="form-control" formControlName="description"></textarea>
+        <div class="invalid-feedback">
+            Podaj opis produktu
+        </div>
+    </div>
+    <div class="form-group" formGroupName="price">
+        <label>Cena</label>
+        <input type="number" class="form-control" formControlName="value">
+        <div class="invalid-feedback">
+            Podaj cenę produktu
+        </div>
+        <input type="hidden" formControlName="currency"/>
+    </div>
+    <div class="form-group">
+        <label>Ilość w magazynie</label>
+        <input type="number" class="form-control" formControlName="amount">
+        <div class="invalid-feedback">
+            Podaj ilość
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Kategoria</label>
+        <select class="form-control" formControlName="categoryId">
+            <option [value]="null">-</option>
+            <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+        </select>
+        <div class="invalid-feedback">
+            Podaj kategorię produktu
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Zdjęcia</label>
+        <div class="product-imgs" formArrayName="photos">
+            <div class="product-img" *ngFor="let item of photos.controls; index as i">
+                <div class="product-img__remove" (click)="deleteImage(i)">
+                    <i class="fa fa-times"></i>
+                </div>
+                <img src="{{item.value | uploads}}" class="img-thumbnail img-responsive"/>
+                <input type="hidden" [formControlName]="i">
+            </div>
+        </div>
+        <dropzone [message]="'Kliknij lub upuść zdjęcie tutaj'" [placeholder]="false"
+                  (success)="onUploadSuccess($event)"></dropzone>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Zapisz</button>
+    </div>
+</form>
+

@@ -1,0 +1,10 @@
+<div class="list-group mt-4">
+    <a tabindex="1" (click)="onClickDeselect()" class="list-group-item">Strona główna</a>
+    <a class="list-group-item"
+       tabindex="2"
+       *ngFor="let category of categories"
+       (click)="categoryClicked(category)"
+       [class.active]="activeCategories.indexOf(category._id) > -1"
+    >{{category.name}}</a>
+</div>
+

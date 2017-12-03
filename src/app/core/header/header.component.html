@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/" tabindex="1">
+            <i class="fa fa-bicycle"></i>
+            Sklep Rowerowy
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active" routerLink="/register"
+                    *ngIf="!((user | async).authorized)">
+                    <a class="nav-link">Zarejestruj się</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" routerLink="/login" *ngIf="!((user | async).authorized)">
+                    <a class="nav-link">Login</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" routerLink="/admin/home"
+                    *ngIf="(user | async).authorized && (user | async).admin">
+                    <a class="nav-link">Panel administracyjny</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" routerLink="/history"
+                    *ngIf="(user | async).authorized && !(user | async).admin">
+                    <a class="nav-link">Historia zamówień</a>
+                </li>
+                <li class="nav-item" *ngIf="(user | async).authorized" (click)="logout()">
+                    <a class="nav-link">Wyloguj</a>
+                </li>
+            </ul>
+        </div>
+
+        <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div>
+            <app-cart-widget></app-cart-widget>
+        </div>
+    </div>
+</nav>

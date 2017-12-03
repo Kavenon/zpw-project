@@ -1,0 +1,18 @@
+<div class="text-center mt-3">
+    Cena
+</div>
+
+<nouislider [connect]="true"
+            [min]="0"
+            [max]="500"
+            [step]="10"
+            [ngModel]="priceRange"
+            (ngModelChange)="priceRangeChanged($event)"></nouislider>
+<div>
+  <span class="pull-left">
+    {{(priceRange)[0]}}
+  </span>
+    <span class="pull-right">
+    {{(priceRange)[1]}}
+  </span>
+</div>

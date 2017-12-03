@@ -1,0 +1,12 @@
+<table class="table text-center">
+    <tr>
+        <th>Produkt</th>
+        <th>Ilość</th>
+        <th>Cena</th>
+    </tr>
+    <tr *ngFor="let item of order.items">
+        <td>{{item.name}}</td>
+        <td>{{item.amount}}</td>
+        <td>{{item.price.value | currency: item.price.currency: true}}</td>
+    </tr>
+</table>

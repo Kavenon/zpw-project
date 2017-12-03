@@ -1,0 +1,56 @@
+<div class="app-header">
+    <div class="app-header__image"></div>
+    <div class="app-header__content">
+        <div>
+            <h1>Najlepszy sklep internetowy</h1>
+            <h2>zapoznaj się z naszą ofertą</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-3">
+            <app-categories
+                    [categories]="categories | async"
+                    [activeCategories]="activeCategories | async"
+                    (onCategoryClick)="onCategoryClick($event)"
+                    (onDeselectAll)="onDeselectAll()"></app-categories>
+            <app-price-filter [priceRange]="priceRange | async" (onChange)="onPriceRangeChanged($event)">
+            </app-price-filter>
+
+        </div>
+
+        <div class="col-lg-9">
+            <div class="mt-4">
+                <div class="form-group">
+                    <input class="form-control"
+                           type="text"
+                           name="term"
+                           placeholder="Wpisz fragment nazwy lub opisu..."
+                           (input)="onTermChanged($event.target.value)"/>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let product of products | async">
+                        <app-product
+                                [product]="product"
+                                (onShowDetails)="showDetails($event)"
+                                (onAddToCart)="addToCart($event)">
+                        </app-product>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mt-4">
+                            <ngb-pagination [collectionSize]="(pagination | async).total"
+                                            [page]="(pagination | async).page"
+                                            [pageSize]="(pagination | async).perPage"
+                                            (pageChange)="onPageChange($event)"></ngb-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

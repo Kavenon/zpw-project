@@ -1,0 +1,35 @@
+<div class="text-center" *ngIf="loading===true">
+    <i class="fa fa-spinner fa-2x fa-spin"></i>
+</div>
+
+<form [formGroup]="authForm" (ngSubmit)="submit()">
+    <div class="form-group">
+        <label>Login</label>
+        <input type="email" class="form-control" formControlName="email">
+        <div class="invalid-feedback">
+            Podaj prawidłowy email
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Hasło</label>
+        <input type="password" class="form-control" formControlName="password">
+        <div class="invalid-feedback">
+            Proszę prawidłowe hasło
+        </div>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="(error)">
+        {{error }}
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">OK</button>
+    </div>
+    <div class="text-center mt-4">
+        <small>wejdź z facebookiem
+            <button type="button" (click)="fbLogin()" class="btn btn-sm btn-primary"><i class="fa fa-facebook"></i>
+                Facebook
+            </button>
+        </small>
+    </div>
+</form>
