@@ -37,7 +37,8 @@ export class ProductService {
                 promo: {
                     discount: 0,
                     until: 0
-                }
+                },
+              amount: 0,
             });
         } else {
           return this.http.get<Product>(API + '/admin/product/' + productId);
@@ -62,7 +63,7 @@ export class ProductService {
         let httpParams = new HttpParams();
         httpParams = httpParams.set('filter', (JSON.stringify(query)));
         httpParams = httpParams.set('pagination', (JSON.stringify(pagination)));
-        return this.http.get(API + '/product', {params: httpParams});
+      return this.http.get<ProductResponse>(API + '/product', {params: httpParams});
 
     }
 
