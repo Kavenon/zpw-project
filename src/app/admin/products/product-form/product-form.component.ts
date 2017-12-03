@@ -40,7 +40,6 @@ export class ProductFormComponent implements OnInit {
         this.productForm.patchValue(this.product);
         this.product.photos.forEach(photo => this.addPhoto(photo));
       this.authService.getToken().then(token => {
-        console.log('token', token);
         this.config.params.auth = token;
       });
     }
