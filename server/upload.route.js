@@ -2,6 +2,14 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+    cloud_name: 'hmgirjkvg',
+    api_key: 255884244151161,
+    api_secret: 'ER4nVyCAMcFBphpKVsZiYQciY7A'
+});
+
 router.post('/api/upload', function (req, res) {
 
     const file = req.files.file;
@@ -18,5 +26,18 @@ router.post('/api/upload', function (req, res) {
     });
 
 });
+
+router.post('/api/cloud/upload', function (req, res) {
+
+    const file = req.files.file;
+    cloudinary.v2.uploader.upload(file.path,
+        function (error, result) {
+            res.json({
+                url: result.url
+            });
+        });
+
+});
+
 
 module.exports = router;

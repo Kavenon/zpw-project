@@ -9,7 +9,7 @@ const socket = require('./socket');
 
 router.get('/api/admin/product/all', function (req, res) {
 
-    ProductModel.find({}, function (dbRq, dbRs) {
+    ProductModel.find({}).sort({'name': 'asc'}).exec(function (dbRq, dbRs) {
         res.json(dbRs);
     });
 

@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../../../products/product';
 import {Category} from '../../../products/category';
-import {API} from '../../../config';
 
 @Component({
   selector: 'app-product-form',
@@ -11,7 +10,6 @@ import {API} from '../../../config';
 })
 export class ProductFormComponent implements OnInit {
 
-  API_URL = API;
   productForm: FormGroup;
   @Input() product: Product;
   @Input() categories: Category[];
