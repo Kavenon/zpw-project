@@ -29,13 +29,14 @@ router.post('/api/upload', function (req, res) {
 
 router.post('/api/cloud/upload', function (req, res) {
 
-    const file = req.files.file;
-    cloudinary.v2.uploader.upload(file.path,
-        function (error, result) {
-            res.json({
-                url: result.url
-            });
-        });
+  const file = req.files.file;
+  cloudinary.v2.uploader.upload_stream({resource_type: 'raw'},
+    function (error, result) {
+      console.log(error, result);
+      res.json({
+        url: result.url
+      });
+    }).end(file.data);
 
 });
 
