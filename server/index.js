@@ -56,8 +56,8 @@ app.use(require('./cart.route'));
 
 require('./socket').init(server);
 
-app.get('*', function (req, res) {
-    res.redirect('/');
-});
+// app.get('*', function (req, res) {
+//     res.redirect('/');
+// });
 
 server.listen(process.env.PORT || 5000);
