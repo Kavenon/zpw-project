@@ -12,18 +12,18 @@ export class OrderService {
     }
 
     getAll(): Observable<Order[]> {
-        return this.http.get(API + '/admin/order');
+      return this.http.get<Order[]>(API + '/admin/order');
     }
 
     saveOrder(order: Order): Observable<Order> {
-        return this.http.post(API + '/order', order);
+      return this.http.post<Order>(API + '/order', order);
     }
 
     doneOrder(order: Order): Observable<Order> {
-        return this.http.post(API + '/admin/order/' + order._id + '/done', {});
+      return this.http.post<Order>(API + '/admin/order/' + order._id + '/done', {});
     }
 
     getForUser(): Observable<Order> {
-        return this.http.get(API + '/user/order');
+      return this.http.get<Order>(API + '/user/order');
     }
 }

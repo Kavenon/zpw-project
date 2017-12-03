@@ -10,6 +10,7 @@ import {API} from '../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {Promo} from './promo';
+import {currencyType} from './price';
 
 @Injectable()
 export class ProductService {
@@ -29,7 +30,7 @@ export class ProductService {
                 description: '',
                 price: {
                   value: 0,
-                    currency: 'USD',
+                  currency: 'USD' as currencyType,
                 },
                 categoryId: null,
                 photos: [],
@@ -50,9 +51,9 @@ export class ProductService {
     saveProduct(product: Product): Observable<Product> {
         const newProduct = Object.assign({}, product);
         if (!newProduct._id) {
-            return this.http.post(API + '/admin/product', product);
+          return this.http.post<Product>(API + '/admin/product', product);
         } else {
-            return this.http.put(API + '/admin/product/' + product._id, product);
+          return this.http.put<Product>(API + '/admin/product/' + product._id, product);
         }
     }
 

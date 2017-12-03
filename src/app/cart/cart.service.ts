@@ -25,11 +25,11 @@ export class CartService {
     }
 
     getCart(): Observable<CartState> {
-        return this.http.get(API + '/user/cart');
+      return this.http.get<CartState>(API + '/user/cart');
     }
 
     saveCart(cart: CartState) {
-        return this.http.post(API + '/user/cart', cart);
+      return this.http.post<CartState>(API + '/user/cart', cart);
     }
 
     private buildOrder(checkoutForm: CheckoutForm, state) {
