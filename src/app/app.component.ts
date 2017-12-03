@@ -20,8 +20,12 @@ export class AppComponent implements OnInit {
         }, 1000);
 
         firebase.initializeApp({
-            apiKey: 'AIzaSyDGHByfVSel-XJT4_j6cf5wMUVJrWpOOR8',
-            authDomain: 'zpw-project.firebaseapp.com'
+          apiKey: 'AIzaSyDGHByfVSel-XJT4_j6cf5wMUVJrWpOOR8',
+          authDomain: 'zpw-project.firebaseapp.com',
+          databaseURL: 'https://zpw-project.firebaseio.com',
+          projectId: 'zpw-project',
+          storageBucket: 'zpw-project.appspot.com',
+          messagingSenderId: '924339970328'
         });
 
         firebase.auth().onAuthStateChanged((user) => {
