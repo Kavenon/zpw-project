@@ -34,7 +34,7 @@ router.post('/api/admin/cloud/upload', function (req, res) {
     function (error, result) {
       console.log(error, result);
       res.json({
-        url: result.url
+        url: result.secure_url
       });
     }).end(file.data);
 
