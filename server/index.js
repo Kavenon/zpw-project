@@ -7,7 +7,7 @@ const authGuard = require('./auth-guard');
 const authAdmin = require('./auth-admin');
 
 app.use('/api/uploads', express.static('server/uploads'));
-app.use(express.static('client/dist'));
+app.use(express.static('dist'));
 app.use(busboyBodyParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json()); // parse application/json
@@ -56,8 +56,8 @@ app.use(require('./cart.route'));
 
 require('./socket').init(server);
 
-// app.get('*', function (req, res) {
-//     res.redirect('/');
-// });
+app.get('*', function (req, res) {
+  res.redirect('/');
+});
 
 server.listen(process.env.PORT || 5000);
