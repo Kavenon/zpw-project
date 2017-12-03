@@ -57,6 +57,9 @@ export class AuthService {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then((user) => this.store.dispatch(new LoginSuccessAction(user)))
-            .catch(() => this.store.dispatch(new LoginFailAction()));
+          .catch((error) => {
+            console.log(error);
+            this.store.dispatch(new LoginFailAction('Nie można zalogować facebookiem, użyj hasła'));
+          });
     }
 }

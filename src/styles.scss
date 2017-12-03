@@ -48,3 +48,9 @@ dropzone.dz-wrapper > .dropzone {
 .spinning-preloader-container {
   z-index: 1000000;
 }
+
+@media (max-width: 991px) {
+  .hidden-md-down {
+    display: none !important;
+  }
+}

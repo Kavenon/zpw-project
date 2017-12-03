@@ -8,10 +8,10 @@ export class LoginFailAction implements Action {
     type = LoginFailAction.type;
 
     static reduce(state: UserState, action: LoginFailAction) {
-        return {...state, error: 'Podane dane są nieprawidłowe', loading: false};
+      return {...state, error: action.error || 'Podane dane są nieprawidłowe', loading: false};
     };
 
-    constructor() {
+  constructor(public error?: string) {
     }
 
 }
