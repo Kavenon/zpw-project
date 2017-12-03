@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-router.post('/upload', function (req, res) {
+router.post('/api/upload', function (req, res) {
 
     const file = req.files.file;
     const split = file.name.split('.');
