@@ -18,7 +18,7 @@ export class SocketService {
 
     init() {
         console.log('SocketService init');
-        const socket = sioc.connect('/ws', {path: '/ws'});
+      const socket = sioc.connect('/ws');
         socket.on('messages', (data) => {
 
             switch (data.type) {
