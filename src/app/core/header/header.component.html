@@ -33,6 +33,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+      <span class="navbar-text mr-5" *ngIf="((user | async).authorized)">
+            <i class="fa fa-user"></i> {{(user | async).email}}
+        </span>
+
         <div>
             <app-cart-widget></app-cart-widget>
         </div>

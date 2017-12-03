@@ -8,7 +8,13 @@ export class LoginSuccessAction implements Action {
     type = LoginSuccessAction.type;
 
     static reduce(state: UserState, action: LoginSuccessAction) {
-        return {...state, authorized: true, loading: false, admin: action.user.displayName === 'admin'};
+      return {
+        ...state,
+        authorized: true,
+        loading: false,
+        admin: action.user.displayName === 'admin',
+        email: action.user.email
+      };
     }
 
     constructor(public user) {

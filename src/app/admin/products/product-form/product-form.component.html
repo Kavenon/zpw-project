@@ -50,8 +50,8 @@
                 <input type="hidden" [formControlName]="i">
             </div>
         </div>
-        <dropzone [message]="'Kliknij lub upuść zdjęcie tutaj'" [placeholder]="false"
-                  (success)="onUploadSuccess($event)"></dropzone>
+      <dropzone [message]="'Kliknij lub upuść zdjęcie tutaj'" [config]="config" [placeholder]="false"
+                (success)="onUploadSuccess($event)"></dropzone>
     </div>
     <div class="text-center">
         <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Zapisz</button>

@@ -15,7 +15,8 @@ export class RegisterComponent {
     onSubmit(authData) {
         this.authService
             .register(authData.email, authData.password)
-            .then(_ => this.router.navigate(['/login']));
+          .then(_ => this.router.navigate(['/login']))
+          .catch(error => this.toast.error(error.message, 'Błąd'));
     }
 
 }

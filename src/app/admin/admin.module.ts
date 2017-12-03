@@ -17,8 +17,8 @@ import {ProductPromoComponent} from './products/product-promo/product-promo.comp
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: API + '/admin/cloud/upload',
-    maxFilesize: 2,
-    acceptedFiles: 'image/*'
+  maxFilesize: 2,
+  acceptedFiles: 'image/*',
 };
 
 @NgModule({

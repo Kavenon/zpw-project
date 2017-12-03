@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../../../products/product';
 import {Category} from '../../../products/category';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
     selector: 'app-product-form',
@@ -14,8 +15,9 @@ export class ProductFormComponent implements OnInit {
     @Input() product: Product;
     @Input() categories: Category[];
     @Output() onSubmit = new EventEmitter<Product>();
+  config: { params: { auth: string } } = {params: {auth: null}};
 
-    constructor() {
+  constructor(private authService: AuthService) {
         this.productForm = new FormGroup({
             '_id': new FormControl(null),
             'name': new FormControl(null, Validators.required),
@@ -37,6 +39,10 @@ export class ProductFormComponent implements OnInit {
     ngOnInit() {
         this.productForm.patchValue(this.product);
         this.product.photos.forEach(photo => this.addPhoto(photo));
+      this.authService.getToken().then(token => {
+        console.log('token', token);
+        this.config.params.auth = token;
+      });
     }
 
     submit() {

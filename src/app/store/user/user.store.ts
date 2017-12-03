@@ -10,6 +10,7 @@ export interface UserState {
     loading: boolean;
     error: string;
     admin: boolean;
+  email: string;
 }
 
 const initState: UserState = {
@@ -17,6 +18,7 @@ const initState: UserState = {
     admin: false,
     loading: false,
     error: null,
+  email: null,
 };
 
 const reducer = createReducer(initState,
