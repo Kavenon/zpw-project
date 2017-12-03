@@ -6,7 +6,7 @@ const server = require('http').createServer(app);
 const authGuard = require('./auth-guard');
 const authAdmin = require('./auth-admin');
 
-app.use('/api/uploads', express.static('uploads'));
+app.use('/api/uploads', express.static('server/uploads'));
 app.use(express.static('client/dist'));
 app.use(busboyBodyParser());
 app.use(bodyParser.urlencoded({extended: false}));
