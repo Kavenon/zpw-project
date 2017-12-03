@@ -18,7 +18,7 @@ export class ProductService {
     }
 
     getAllProducts(): Observable<Product[]> {
-        return this.http.get(API + '/admin/product/all');
+      return this.http.get<Product[]>(API + '/admin/product/all');
     }
 
     getProductToEdit(productId?: string): Observable<Product> {
@@ -28,7 +28,7 @@ export class ProductService {
                 name: '',
                 description: '',
                 price: {
-                    value: null,
+                  value: 0,
                     currency: 'USD',
                 },
                 categoryId: null,
@@ -39,7 +39,7 @@ export class ProductService {
                 }
             });
         } else {
-            return this.http.get(API + '/admin/product/' + productId);
+          return this.http.get<Product>(API + '/admin/product/' + productId);
         }
     }
 
