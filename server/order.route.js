@@ -83,11 +83,12 @@ router.post('/api/admin/order/:id/done', function (req, res) {
 router.post('/api/order', function (req, res) {
 
     const promises = checkIfStorageHasProducts(req);
+  console.log('saving order init');
 
     Promise.all(promises)
         .then(_ => getUid(req.query.auth))
         .then(function (uid) {
-
+          console.log('saving order');
             if (uid) {
                 CartModel.remove({uid: uid}, function (e, c) {
                 });
@@ -115,6 +116,7 @@ router.post('/api/order', function (req, res) {
                 items: items,
                 status: req.body.status
             }).save(function (err, order) {
+              console.log(err);
                 decreateAndNotifyAmountChange(items);
                 res.json(order);
             });

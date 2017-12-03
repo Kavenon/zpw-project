@@ -34,7 +34,7 @@ export class AuthService {
     }
 
     isAuth() {
-        return this.store.select(state => state.user.authorized);
+      return this.store.select(state => state.user.authorized).take(1);
     }
 
     isAdmin() {

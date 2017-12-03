@@ -2,6 +2,10 @@ const admin = require("firebase-admin");
 
 module.exports = function (auth) {
     return new Promise((resolve, reject) => {
+      if (!auth) {
+        resolve(null);
+        return;
+      }
         let userp = admin.auth().verifyIdToken(auth);
         userp.then(user => {
             if (user) {
@@ -11,6 +15,6 @@ module.exports = function (auth) {
                 resolve(null);
             }
         })
-            .catch(_ => resolve(null));
+          .catch(_ => resolve(null));
     })
 };

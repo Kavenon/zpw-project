@@ -9,6 +9,7 @@ import {Store} from '@ngrx/store';
 import {CartService} from '../../cart/cart.service';
 import {RestoreAction} from './restore.action';
 import {RestoreSuccessAction} from './restore-success.action';
+import {AuthService} from '../../auth/auth.service';
 
 @Injectable()
 export class CartEffects {
@@ -27,10 +28,17 @@ export class CartEffects {
         .ofType(AddItemAction.type)
         .withLatestFrom(this.store$)
         .switchMap(([action, state]) => {
-            this.cartService.saveCart(state.cart).subscribe(c => console.log(c), e => console.error(e));
-            return Observable.of({});
+          return this.authService.isAuth()
+            .switchMap(isAuth => {
+              if (isAuth) {
+                this.cartService.saveCart(state.cart).subscribe(c => console.log(c), e => console.error(e));
+              }
+              return Observable.of({});
+            });
         });
 
-    constructor(private action$: Actions, private store$: Store<AppState>, private cartService: CartService) {
+  constructor(private action$: Actions,
+              private store$: Store<AppState>, private cartService: CartService,
+              private authService: AuthService) {
     }
 }
