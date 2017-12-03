@@ -10,7 +10,7 @@ cloudinary.config({
     api_secret: 'ER4nVyCAMcFBphpKVsZiYQciY7A'
 });
 
-router.post('/api/upload', function (req, res) {
+router.post('/api/admin/upload', function (req, res) {
 
     const file = req.files.file;
     const split = file.name.split('.');
@@ -27,7 +27,7 @@ router.post('/api/upload', function (req, res) {
 
 });
 
-router.post('/api/cloud/upload', function (req, res) {
+router.post('/api/admin/cloud/upload', function (req, res) {
 
   const file = req.files.file;
   cloudinary.v2.uploader.upload_stream({resource_type: 'raw'},

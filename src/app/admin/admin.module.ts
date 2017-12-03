@@ -16,7 +16,7 @@ import {CommonComponentsModule} from '../common-components.module';
 import {ProductPromoComponent} from './products/product-promo/product-promo.component';
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
-    url: API + '/cloud/upload',
+  url: API + '/admin/cloud/upload',
     maxFilesize: 2,
     acceptedFiles: 'image/*'
 };
